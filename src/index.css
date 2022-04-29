@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('./fonts/oswald/oswald.css');
+@import url('./fonts/poppins/poppins.css');

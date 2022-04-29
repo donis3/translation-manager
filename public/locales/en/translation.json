@@ -1,0 +1,31 @@
+{
+	"app": {
+		"name": "Translation Manager",
+		"author": "Deniz Ozkan"
+	},
+	"routes": {
+		"home": "Start",
+		"help": "Help",
+		"about": "About",
+		"notfound": "Not Found"
+	},
+	"footer": {
+		"copyright": "©{{year}} {{app}}",
+		"madeWithLove": "Made with <1/> by {{author}}",
+		"themeLight": "Light Mode",
+		"themeDark": "Dark Mode"
+	},
+	"applicationError": {
+		"title": "Application Crashed!",
+		"message": "Application crashed due to an error. Please contact us if the problem persists.",
+		"button": "Go Back"
+	},
+	"home": {
+		"title": "Welcome to React & Daisy",
+		"lead": "This application is ready to go with i18next, daisyUi, auto Dark/Light mode, router and more..."
+	},
+	"notfound": {
+		"title": "404 / Page not found",
+		"lead": "Requested page couldn't be found"
+	}
+}

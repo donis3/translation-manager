@@ -1,0 +1,22 @@
+{
+	"app": {
+		"name": "Çeviri Yardımcısı",
+		"author": "Deniz Özkan"
+	},
+	"routes": {
+		"home": "Başla",
+		"help": "Yardım",
+		"about": "Hakkında"
+	},
+	"footer": {
+		"copyright": "©{{year}} {{app}}",
+		"madeWithLove": "{{author}} tarafından <1/> ile yapıldı",
+		"themeLight": "Açık Tema",
+		"themeDark": "Koyu Tema"
+	},
+	"applicationError": {
+		"title": "Uygulama Durduruldu!",
+		"message": "Bir hata sebebiyle uygulama durduruldu. Eğer sorun devam ederse lütfen bizimle iletişime geçin.",
+		"button": "Geri Git"
+	}
+}
