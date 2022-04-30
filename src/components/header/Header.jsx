@@ -5,6 +5,7 @@ import { GiFeather } from 'react-icons/gi';
 
 export default function Header({ children }) {
 	const { t } = useTranslation();
+
 	return (
 		<div className='navbar bg-neutral items-end flex-wrap'>
 			<div className='flex-1'>

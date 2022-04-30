@@ -7,6 +7,7 @@ import Loading from './pages/misc/Loading';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorBoundary from './pages/misc/ErrorBoundary';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<ErrorBoundary>

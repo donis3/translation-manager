@@ -15,7 +15,7 @@ export default function LanguageSelector({ ...props }) {
 					<li key={i}>
 						<button
 							type='button'
-							className={`btn btn-xs ${isActive ? 'btn-outline' : 'btn-ghost'}`}
+							className={`btn btn-sm btn-ghost ${isActive ? 'btn-active' : ''}`}
 							onClick={() => changeLanguage(locale.tag)}
 						>
 							{locale.local}

@@ -21,11 +21,19 @@
 		"button": "Go Back"
 	},
 	"home": {
-		"title": "Welcome to React & Daisy",
-		"lead": "This application is ready to go with i18next, daisyUi, auto Dark/Light mode, router and more..."
+		"title": "Managing translation files made easy!",
+		"lead": "Load your original translation file and easily edit each key before downloading. Only json files are supported."
 	},
 	"notfound": {
 		"title": "404 / Page not found",
 		"lead": "Requested page couldn't be found"
+	},
+	"uploader": {
+		"reference": "Reference",
+		"filename": "✓ {{filename}}",
+		"referenceText": "Load the source file which will then be used to generate a new translation file or fill the gaps of an existing one.",
+		"uploadBtn": "Load",
+		"startBtn": "Start",
+		"InvalidFiletype": "Invalid Filetype"
 	}
 }
