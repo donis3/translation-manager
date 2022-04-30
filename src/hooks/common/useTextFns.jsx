@@ -32,5 +32,16 @@ export default function useTextFns() {
 		return ext ? truncate(fileBaseName, maxLength, suffix) + '.' + ext : truncate(fileBaseName, maxLength, suffix);
 	}
 
-	return { truncate, truncateFilename };
+	function removeExtension(filename) {
+		if (!filename) return filename;
+		const parts = filename.split('.');
+		if (parts.length > 1) {
+			parts.pop();
+			return parts.join('.');
+		} else {
+			return filename;
+		}
+	}
+
+	return { truncate, truncateFilename, removeExtension };
 }

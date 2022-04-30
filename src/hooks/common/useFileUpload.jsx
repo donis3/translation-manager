@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useFileUpload(inputRef, allowed = null) {
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(false);
+	const reader = new FileReader();
+	reader.onload = handleFileLoad;
 
 	useEffect(() => {
 		const fileInput = inputRef?.current;
@@ -10,17 +12,28 @@ export default function useFileUpload(inputRef, allowed = null) {
 			fileInput.addEventListener('change', handleFileChange, false);
 		}
 		return () => fileInput?.removeEventListener('change', handleFileChange, false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	function handleFileChange(e) {
 		if (e.target?.files && e.target.files?.[0]) {
 			if (isAllowed(e.target.files[0].type)) {
-				setFile(e.target.files[0]);
-				setError(false);
+				reader.readAsText(e.target.files[0]);
+				setFile({ name: e.target.files[0].name, type: e.target.files[0].type, content: null });
 			} else {
 				setFile(null);
-				setError({ message: 'InvalidFiletype', data: e.target.files[0].type });
+				setError({ message: 'InvalidFiletype' });
 			}
+		}
+	}
+
+	function handleFileLoad() {
+		if (reader.result) {
+			setFile((state) => ({ ...state, content: reader.result }));
+			setError(null);
+		} else {
+			setFile(null);
+			setError({ message: 'EmptyFile' });
 		}
 	}
 
@@ -44,5 +57,7 @@ export default function useFileUpload(inputRef, allowed = null) {
 		setError(false);
 	}
 
-	return { file, error, reset };
+	
+
+	return { file, error, reset, setError, setFile };
 }

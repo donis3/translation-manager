@@ -13,7 +13,10 @@ export default function Menu() {
 				<MenuItem route='/'>{t('routes.home')}</MenuItem>
 			</li>
 			<li>
-				<MenuItem route='/notfound'>{t('routes.notfound')}</MenuItem>
+				<MenuItem route='/target'>{t('routes.target')}</MenuItem>
+			</li>
+			<li>
+				<MenuItem route='/edit'>{t('routes.edit')}</MenuItem>
 			</li>
 			<li className='ml-2 pl-2 border-l border-neutral-content'>
 				<LanguageSelector className='btn btn-xs font-light' />

@@ -2,15 +2,9 @@ import React from 'react';
 
 export default function useAppDefaults() {
 	const files = {
-		original: {
-			loaded: false,
-			name: '',
-			language: null,
-			contents: null,
-		},
-		target: { loaded: false, name: '', language: null, contents: null },
+		original: null,
+		target: null,
 	};
 
-
-	return { files, original: {}, target: {}, language: null, filename: null };
+	return { files, data: {}, language: null, filename: null, loadedAt: null };
 }
