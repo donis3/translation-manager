@@ -12,9 +12,7 @@ export default function Menu() {
 			<li>
 				<MenuItem route='/'>{t('routes.home')}</MenuItem>
 			</li>
-			<li>
-				<MenuItem route='/target'>{t('routes.target')}</MenuItem>
-			</li>
+
 			<li>
 				<MenuItem route='/edit'>{t('routes.edit')}</MenuItem>
 			</li>

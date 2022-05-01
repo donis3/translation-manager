@@ -10,7 +10,7 @@ export default function LanguageSelector({ ...props }) {
 	return (
 		<Dropdown text={ui.locale.local} className='btn btn-sm btn-ghost' {...props}>
 			{availableLanguages.map((locale, i) => {
-				let isActive = locale.tag === language;
+				let isActive = locale['iso639-1'] === language;
 				return (
 					<li key={i}>
 						<button

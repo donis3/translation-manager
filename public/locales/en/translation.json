@@ -1,4 +1,5 @@
 {
+	"locale": "en-US",
 	"app": {
 		"name": "Translation Manager",
 		"author": "Deniz Ozkan"
@@ -22,14 +23,34 @@
 		"message": "Application crashed due to an error. Please contact us if the problem persists.",
 		"button": "Go Back"
 	},
+	"labels": {
+		"start": "Start",
+		"continue": "Continue",
+		"load": "Load",
+		"upload": "Upload",
+		"optional": "(Optional)"
+	},
 	"home": {
 		"title": "Managing translation files made easy!",
-		"lead": "Load your original translation file and easily edit each key before downloading. Only json files are supported."
+		"lead": "Load your original translation file and easily edit each key before downloading. Only json files are supported.",
+		"startText": "Start a new translation",
+		"continueText": "Continue translating <1>{{filename}}</1>",
+		"loadedOn": "loaded on <1>{{date}}</1>"
 	},
-	"target": {
-		"title": "Language Options",
-		"lead": "Define language options and load an existing language file to work on(optional)"
+	"start": {
+		"title": "Start translation",
+		"lead": "Load an existing language file (json) to start editing. You can optionally provide a target file if you already have a partial translation that you want to keep. Reference file and target file will be merged and any keys that aren't in the original file will be discarded.",
+		"formTitle": "Translation Options",
+		"originalFile": "Reference File",
+		"originalFileAlt": "Original file that needs translating",
+		"targetFile": "Target File",
+		"targetFileAlt": "If you already have a partially translated file, load it here. All keys that match the original file will be kept.",
+		"filename": "Filename",
+		"filenameAlt": "New translation file will be saved with this name.",
+		"language": "Language",
+		"languageAlt": "What language will the prepared translation file be? This option is only for convenience and doesn't effect the file."
 	},
+
 	"notfound": {
 		"title": "404 / Page not found",
 		"lead": "Requested page couldn't be found"
@@ -46,7 +67,12 @@
 	},
 
 	"error": {
-		"InvalidJsonData": "Invalid json data"
+		"InvalidJsonData": "Invalid json data",
+		"InvalidFiletype": "Invalid Filetype",
+		"EmptyFile": "Empty File",
+		"fileRequired": "File is required",
+		"required": "This field is required",
+		"minLength": "Must be at least {{length}} characters"
 	},
 	"success": {
 		"start": "Data successfully loaded"

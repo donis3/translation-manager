@@ -59,7 +59,7 @@ function ThemeToggle() {
 			className='btn btn-xs btn-ghost text-neutral-content gap-1 font-thin hover:font-semibold'
 			onClick={changeTheme}
 		>
-			{ui.dark ? (
+			{ui?.dark ? (
 				<>
 					{t('footer.themeDark')} <MdDarkMode />
 				</>

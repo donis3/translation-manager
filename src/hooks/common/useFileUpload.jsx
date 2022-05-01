@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function useFileUpload(inputRef, allowed = null) {
 	const [file, setFile] = useState(null);
+
 	const [error, setError] = useState(false);
 	const reader = new FileReader();
 	reader.onload = handleFileLoad;
@@ -29,7 +30,10 @@ export default function useFileUpload(inputRef, allowed = null) {
 
 	function handleFileLoad() {
 		if (reader.result) {
-			setFile((state) => ({ ...state, content: reader.result }));
+			setFile((state) => {
+				return { ...state, content: reader.result };
+			});
+
 			setError(null);
 		} else {
 			setFile(null);
@@ -57,7 +61,5 @@ export default function useFileUpload(inputRef, allowed = null) {
 		setError(false);
 	}
 
-	
-
-	return { file, error, reset, setError, setFile };
+	return { file, error, reset, setError, setFile, isLoaded: () => (file?.content ? true : false) };
 }

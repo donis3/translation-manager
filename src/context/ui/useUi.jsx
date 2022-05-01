@@ -3,14 +3,14 @@ import config from '../../config/config';
 import { UiContext } from './uiContext';
 import { useTranslation } from 'react-i18next';
 import { languages } from '../../config/i18n';
-import * as locale from 'locale-codes';
+import localeCodes from 'locale-codes';
 
 /**
  * Initial ui state when there is no local storage data
  */
 export const uiDefaultState = {
 	dark: config.theme.isDark(),
-	locale: locale.getByTag('en'),
+	locale: localeCodes.getByTag('en'),
 	validUntil: null,
 };
 
@@ -22,6 +22,33 @@ export default function useUi() {
 	const { i18n } = useTranslation();
 	const [ui, setUi] = useContext(UiContext);
 
+	/**
+	 * Get locale details for 2 letter lang code
+	 * @param {*} iso639 2 letter language code
+	 * @returns {object || null}
+	 */
+	function getLocaleData(iso639) {
+		if (!iso639) return null;
+
+		const result = localeCodes.all.find((item) => item?.['iso639-1']?.toLowerCase() === iso639.toLowerCase());
+		if (!result) {
+			throw new Error(`Locale for ${iso639} cant be found!`);
+		}
+		//Default locale code for INTL
+		let localeCode = 'en-US';
+		try {
+			//Find locale code for this language
+			const intlCode = Intl.getCanonicalLocales(iso639);
+			if (intlCode.length > 0) localeCode = intlCode[0];
+		} catch (error) {
+			//No locale coded were found for this language iso
+		}
+		return {
+			...result,
+			code: localeCode,
+		};
+	}
+
 	useEffect(() => {
 		//On load, change theme to requested theme if its still valid
 		if (ui.validUntil && ui.validUntil > Date.now()) {
@@ -31,11 +58,11 @@ export default function useUi() {
 			//Ui state is no longer valid, revert state to original
 			setUi((state) => ({ ...state, dark: config.theme.isDark(), validUntil: null }));
 		}
-		if (i18n.language !== ui.locale.tag) {
+		if (i18n.language !== ui.locale?.['iso639-1']) {
 			//i18next language and ui storage is out of sync
 			changeLanguage(i18n.language);
 		}
-		if (ui.locale) setLangAttribute(ui.locale.tag);
+		if (ui.locale) setLangAttribute(ui.locale?.['iso639-1']);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -48,10 +75,15 @@ export default function useUi() {
 		if (!languages.includes(lang)) return;
 		setLangAttribute(lang);
 		let result = false;
+
 		//Set ui state
-		if (ui.locale.tag !== lang) {
-			setUi((state) => ({ ...state, locale: locale.getByTag(lang) }));
-			result = true;
+		if (ui.locale?.['iso639-1'] !== lang) {
+			//Get locale code
+			const localeData = getLocaleData(lang);
+			if (localeData) {
+				setUi((state) => ({ ...state, locale: localeData }));
+				result = true;
+			}
 		}
 		//Set i18next
 		if (i18n.language !== lang) {
@@ -60,6 +92,7 @@ export default function useUi() {
 		}
 		result && config.log(`Changed language to ${lang}`, 'ui');
 	};
+
 	/**
 	 * Manually change the theme to dark or light
 	 * @param {*} dark
@@ -83,8 +116,8 @@ export default function useUi() {
 		changeLanguage,
 		changeTheme,
 		isDark: () => document.documentElement.getAttribute('data-theme') === 'dark',
-		availableLanguages: languages.map((lang) => locale.getByTag(lang)),
-		language: ui.locale.tag,
+		availableLanguages: languages.map((iso) => getLocaleData(iso)),
+		language: ui.locale?.['iso639-1'],
 	};
 }
 
