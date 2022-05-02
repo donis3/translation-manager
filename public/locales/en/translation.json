@@ -34,7 +34,9 @@
 		"reset": "Reset",
 		"deleteAll": "Delete All Data",
 		"confirm": "Confirm",
-		"cancel": "Cancel"
+		"cancel": "Cancel",
+		"previous": "Previous",
+		"next": "Next"
 	},
 	"home": {
 		"title": "Managing translation files made easy!",
@@ -62,7 +64,7 @@
 		"confirmResetMessage": "This action will reset all translation values to default.",
 		"confirmDeleteTitle": "Delete Translation?",
 		"confirmDeleteMessage": "This action will delete all saved data. You will lose all progress. Please make sure you've downloaded your work before taking this action.",
-		"_": ""
+		"mainSectionName": "Main Section"
 	},
 
 	"notfound": {

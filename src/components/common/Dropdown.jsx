@@ -50,10 +50,15 @@ Dropdown.Item = ({ children, ...props }) => {
 	);
 };
 
-Dropdown.Button = ({ children, ...props } = {}) => {
+Dropdown.Button = ({ children, active = false, className, ...props } = {}) => {
+	if (!className) {
+		className = `btn btn-ghost btn-sm whitespace-nowrap w-full ${active && 'btn-active'}`;
+	} else {
+		className = `${className} ${active && 'btn-active'}`;
+	}
 	return (
 		<Dropdown.Item>
-			<button type='button' className='btn btn-ghost btn-sm whitespace-nowrap w-full' {...props}>
+			<button type='button' className={className} {...props}>
 				{children}
 			</button>
 		</Dropdown.Item>
