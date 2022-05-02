@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaPlay } from 'react-icons/fa';
 import FileInput from '../../components/form/FileInput';
@@ -7,16 +7,25 @@ import Select from '../../components/form/Select';
 import { AppContext } from '../../context/app/appContext';
 import useLangList from '../../hooks/app/useLangList';
 import useTextFns from '../../hooks/common/useTextFns';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function Start() {
 	const [app, dispatch] = useContext(AppContext);
 	const { t } = useTranslation();
 	const { removeExtension } = useTextFns();
-	const languages = useLangList();
+	const { selectLanguageArray } = useLangList();
 	const [formState, setFormState] = useState({ original: null, target: null });
 	const [formErrors, setFormErrors] = useState({});
 	const inputRef = useRef({});
 	const formDefaults = { filename: '', language: 'en' };
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (app && app?.loadedAt && Date.now() - app.loadedAt < 100) {
+			navigate('/edit');
+		}
+	}, [app, navigate]);
 
 	/**
 	 * Call when original file load event triggered
@@ -51,10 +60,16 @@ export default function Start() {
 			language: getRefValue('language'),
 		});
 		if (!formData) return;
-		//No errors continue,
-		console.log(
-			'TODO: send data to dispatch, navigate to edit page if successfull. We can use useEffect on app.loadedAt data to navigate if loadedAt was within 1 second'
-		);
+
+		const action = {
+			type: 'initialize',
+			payload: formData,
+			error: (errCode) => toast.error(t(`error.${errCode}`), { toastId: 'start' }),
+			success: () => {
+				toast.success(t(`success.initialize`), { toastId: 'start' });
+			},
+		};
+		dispatch(action);
 	};
 
 	/**
@@ -162,7 +177,7 @@ export default function Start() {
 								ref={(el) => (inputRef.current['language'] = el)}
 								label={t('start.language')}
 								error={formErrors?.language}
-								options={languages}
+								options={selectLanguageArray}
 								alt={t('start.languageAlt')}
 								defaultValue='en'
 							/>

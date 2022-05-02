@@ -1,8 +1,10 @@
 import React from 'react';
 import useTextFns from '../../hooks/common/useTextFns';
+import useAppDefaults from './useAppDefaults';
 
 export default function useAppReducer() {
 	const { removeExtension } = useTextFns();
+	const defaultData = useAppDefaults();
 
 	function appReducer(state, action) {
 		const { type, payload, error, success } = action;
@@ -12,7 +14,7 @@ export default function useAppReducer() {
 			return newState;
 		};
 
-		const onError = (errCode = '') => {
+		const onError = (errCode = 'fail') => {
 			error?.(errCode);
 			return state;
 		};
@@ -42,6 +44,30 @@ export default function useAppReducer() {
 					files: { ...state.files, original: fileData },
 					loadedAt: Date.now(),
 				});
+			}
+
+			case 'initialize': {
+				if (!payload) return onError('InvalidData');
+				const { original, target, filename, language } = payload || {};
+				if (!original) return onError('InvalidData');
+
+				try {
+					const newState = {
+						...defaultData,
+						loadedAt: Date.now(),
+						filename: filename ? removeExtension(filename) : removeExtension(original?.name),
+						language: language ? language : 'en',
+						files: {
+							original: original,
+							target: target ? target : null,
+						},
+						data: JSON.parse(original?.content),
+					};
+
+					return onSucces(newState);
+				} catch (error) {
+					return onError('InvalidJsonData');
+				}
 			}
 
 			default: {

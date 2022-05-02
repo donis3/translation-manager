@@ -26,7 +26,7 @@ export default function Dropdown({ text, children, timeout, ...props }) {
 			</div>
 			<div className='flex justify-center relative'>
 				<ul
-					className={`absolute transition-transform origin-top p-1 border flex flex-col items-center gap-1  bg-base-100 z-50 shadow-md rounded-md ${
+					className={`absolute top-1 transition-transform origin-top p-2 border flex flex-col items-center gap-2  bg-base-100 z-50 shadow-md rounded-md min-w-[100px] ${
 						isActive ? 'scale-y-100' : 'scale-y-0'
 					}`}
 				>
@@ -40,4 +40,22 @@ export default function Dropdown({ text, children, timeout, ...props }) {
 Dropdown.defaultProps = {
 	text: 'TEXT',
 	timeout: 7000,
+};
+
+Dropdown.Item = ({ children, ...props }) => {
+	return (
+		<li className='w-full' {...props}>
+			{children}
+		</li>
+	);
+};
+
+Dropdown.Button = ({ children, ...props } = {}) => {
+	return (
+		<Dropdown.Item>
+			<button type='button' className='btn btn-ghost btn-sm whitespace-nowrap w-full' {...props}>
+				{children}
+			</button>
+		</Dropdown.Item>
+	);
 };

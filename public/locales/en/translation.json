@@ -28,7 +28,13 @@
 		"continue": "Continue",
 		"load": "Load",
 		"upload": "Upload",
-		"optional": "(Optional)"
+		"optional": "(Optional)",
+		"actions": "Actions",
+		"download": "Download",
+		"reset": "Reset",
+		"deleteAll": "Delete All Data",
+		"confirm": "Confirm",
+		"cancel": "Cancel"
 	},
 	"home": {
 		"title": "Managing translation files made easy!",
@@ -50,6 +56,14 @@
 		"language": "Language",
 		"languageAlt": "What language will the prepared translation file be? This option is only for convenience and doesn't effect the file."
 	},
+	"edit": {
+		"title": "{{language}} Translation",
+		"confirmResetTitle": "Reset all fields?",
+		"confirmResetMessage": "This action will reset all translation values to default.",
+		"confirmDeleteTitle": "Delete Translation?",
+		"confirmDeleteMessage": "This action will delete all saved data. You will lose all progress. Please make sure you've downloaded your work before taking this action.",
+		"_": ""
+	},
 
 	"notfound": {
 		"title": "404 / Page not found",
@@ -67,6 +81,7 @@
 	},
 
 	"error": {
+		"fail": "Request failed.",
 		"InvalidJsonData": "Invalid json data",
 		"InvalidFiletype": "Invalid Filetype",
 		"EmptyFile": "Empty File",
@@ -75,6 +90,7 @@
 		"minLength": "Must be at least {{length}} characters"
 	},
 	"success": {
-		"start": "Data successfully loaded"
+		"start": "Data successfully loaded",
+		"initialize": "Data successfully loaded, starting new translation. Good luck!"
 	}
 }

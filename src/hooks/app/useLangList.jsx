@@ -4,7 +4,7 @@ import * as locales from 'locale-codes';
  * Generate an array of languages for language selection
  */
 export default function useLangList() {
-	const list = locales.all.reduce((acc, locale) => {
+	const selectLanguageArray = locales.all.reduce((acc, locale) => {
 		const { 'iso639-1': iso6391, name } = locale;
 
 		if (!iso6391) {
@@ -19,5 +19,12 @@ export default function useLangList() {
 		}
 	}, []);
 
-	return list;
+	function getLanguage(langCode) {
+		if (!langCode) return;
+		const locale = locales.all.find((item) => item['iso639-1'] === langCode);
+		if (locale) return locale.name;
+		return 'Unknown';
+	}
+
+	return { selectLanguageArray, getLanguage };
 }
