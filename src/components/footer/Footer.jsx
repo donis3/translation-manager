@@ -16,17 +16,17 @@ export default function Footer() {
 	return (
 		<div className='bg-neutral p-2 flex flex-wrap items-center justify-between mt-10 gap-y-3'>
 			{/* Left Part */}
-			<div className='text-neutral-content'>
+			<div className='text-neutral-content  min-w-fit'>
 				<p className='  text-sm text-neutral-content'>
 					<a href={config.app.git}>{t('footer.copyright', footerData)}</a>
 				</p>
 			</div>
 			{/* Middle */}
-			<div className='flex-1 flex justify-center'>
+			<div className='flex-1 flex justify-center min-w-fit'>
 				<ThemeToggle />
 			</div>
 			{/* Right Part */}
-			<div className=''>
+			<div className=' min-w-fit'>
 				<MadeWithLove />
 			</div>
 		</div>

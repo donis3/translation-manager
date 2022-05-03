@@ -1,9 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaDownload } from 'react-icons/fa';
-import Dropdown from '../../components/common/Dropdown';
-import useLangList from '../../hooks/app/useLangList';
-import useConfirm from '../../hooks/common/useConfirm';
+import Dropdown from '../../../components/common/Dropdown';
+
+import useLangList from '../../../hooks/app/useLangList';
+import useConfirm from '../../../hooks/common/useConfirm';
 
 export default function EditTitle({ percent, actions, language }) {
 	const { t } = useTranslation();

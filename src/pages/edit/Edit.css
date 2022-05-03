@@ -1,5 +1,5 @@
 .translate-section .translate-item {
-    @apply border-b border-neutral px-3 py-6
+    @apply border-b border-neutral px-3 py-6 border-opacity-20
 }
 
 .translate-section .translate-item:last-child {
