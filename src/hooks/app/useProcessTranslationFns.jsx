@@ -165,11 +165,6 @@ export default function useProcessTranslationFns() {
 		return result;
 	}
 
-	// //Test
-	// const orig = processObject(testOriginal);
-	// const targ = processObject(testTarget);
-	// //console.log(mergeTranslations(orig, targ, true));
-
 	return { processObject, mergeTranslations };
 }
 
@@ -195,20 +190,24 @@ function isValueSubsection(val) {
 	return false;
 }
 
-const testOriginal = {
-	locale: 'en-US',
-	app: {
-		name: 'Translation Manager',
-	},
-	routes: {
-		home: 'Homepage',
-		trans: 'Translate',
-	},
-};
+// const testOriginal = {
+// 	locale: 'en-US',
+// 	app: {
+// 		name: 'Translation Manager',
+// 	},
+// 	routes: {
+// 		home: 'Homepage',
+// 		trans: 'Translate',
+// 	},
+// };
 
-const testTarget = {
-	locale: 'tr-TR',
-	routes: {
-		home: 'ANASAYFA',
-	},
-};
+// const testTarget = {
+// 	locale: 'tr-TR',
+// 	routes: {
+// 		home: 'ANASAYFA',
+// 	},
+// };
+// //Test
+// const orig = processObject(testOriginal);
+// const targ = processObject(testTarget);
+// //console.log(mergeTranslations(orig, targ, true));

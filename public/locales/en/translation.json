@@ -36,7 +36,10 @@
 		"confirm": "Confirm",
 		"cancel": "Cancel",
 		"previous": "Previous",
-		"next": "Next"
+		"next": "Next",
+		"deleteConfirm": "Are you sure?",
+		"yes": "Yes",
+		"no": "No"
 	},
 	"home": {
 		"title": "Managing translation files made easy!",
@@ -67,7 +70,9 @@
 		"mainSectionName": "Main Section",
 		"loadErrorText": "The translation file couldn't be parsed. Please make sure you've loaded a valid json file.",
 		"loadErrorTitle": "Error!",
-		"loadErrorBtn": "Start Over"
+		"loadErrorBtn": "Start Over",
+		"copyText": "Copy reference value as translation",
+		"deleteKey": "Delete this item"
 	},
 
 	"notfound": {
@@ -92,11 +97,15 @@
 		"EmptyFile": "Empty File",
 		"fileRequired": "File is required",
 		"required": "This field is required",
-		"minLength": "Must be at least {{length}} characters"
+		"minLength": "Must be at least {{length}} characters",
+		"deleteItem": "{{item}} couldn't be deleted."
 	},
 	"success": {
 		"start": "Data successfully loaded",
-		"initialize": "Data successfully loaded, starting new translation. Good luck!"
+		"initialize": "Data successfully loaded, starting new translation. Good luck!",
+		"reset": "Translation data have been reset back to initial state.",
+		"deleteAll": "All translation data have been deleted.",
+		"deleteItem": "{{item}} successfully deleted"
 	},
 	"process": {
 		"recursionLimit": "Max JSON depth of {{limit}} reached. Unable to process json file. Please reduce depth"

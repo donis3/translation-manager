@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStorage from '../common/useStorage';
 
@@ -9,6 +10,14 @@ export default function useArrayPagination({ name = '', pages = [] } = {}) {
 	const initialPage = pages[0];
 	const [currentPage, setCurrentPage] = useStorage(name, initialPage);
 	const navigationObject = generateNavState(pages, currentPage);
+
+	useEffect(() => {
+		if (Array.isArray(pages) && pages.length > 0 && pages.includes(currentPage) === false) {
+			//This page no longer exists in our pages array. Revert back to original
+			setCurrentPage(initialPage);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	/**
 	 * Helper function to determine next/previous buttons for sections

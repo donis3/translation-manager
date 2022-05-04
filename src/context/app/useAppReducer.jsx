@@ -1,4 +1,3 @@
-import React from 'react';
 import useProcessTranslationFns from '../../hooks/app/useProcessTranslationFns';
 import useTextFns from '../../hooks/common/useTextFns';
 import useAppDefaults from './useAppDefaults';
@@ -74,15 +73,109 @@ export default function useAppReducer() {
 				}
 			}
 
+			case 'resetData': {
+				try {
+					//Reset data back to initial state when files were first loaded
+					const newState = {
+						...state,
+						reference: generateReference(state?.files?.original?.content),
+						translated: generateTranslated(state?.files?.original?.content, state?.files?.target?.content),
+					};
+					return onSucces(newState);
+				} catch (error) {
+					return onError('InvalidJsonData');
+				}
+			}
+
+			case 'deleteAll': {
+				//Revert state back to default
+				return onSucces(defaultData);
+			}
+
+			case 'deleteItem': {
+				//Remove an item from translated array section
+				const { section, key } = payload;
+				if (!key) return onError();
+				//find sections
+				const refSection = state?.reference?.find((sct) => sct.name === section);
+				const targetSection = state?.translated?.find((sct) => sct.name === section);
+
+				//Default values for sections
+				const newTargetSection = { name: section, data: [] };
+				const newRefSection = { name: section, data: [] };
+				//Check if target and ref sections exist in state
+				if (targetSection) {
+					newTargetSection.data = targetSection.data.filter((item) => item.key !== key);
+				}
+				if (refSection) {
+					newRefSection.data = refSection.data.filter((item) => item.key !== key);
+				}
+				//Create new states for reference and translated arrays
+				let newReferenceArray = [newRefSection];
+				if (refSection) {
+					newReferenceArray = state.reference.map((sct) => {
+						if (sct.name !== section) return sct;
+						return newRefSection;
+					});
+				}
+				let newTranslatedArray = [newTargetSection];
+				if (targetSection) {
+					newTranslatedArray = state.translated.map((sct) => {
+						if (sct.name !== section) return sct;
+						return newTargetSection;
+					});
+				}
+				//Check data length and if no items left in section, remove section
+				if (newRefSection.data.length === 0) {
+					newReferenceArray = newReferenceArray.filter((sct) => sct.name !== section);
+				}
+				if (newTargetSection.data.length === 0) {
+					newTranslatedArray = newTranslatedArray.filter((sct) => sct.name !== section);
+				}
+
+				//generate new state
+				const newState = {
+					...state,
+					reference: newReferenceArray,
+					translated: newTranslatedArray,
+				};
+
+				return onSucces(newState);
+			}
+
 			case 'handleChange': {
 				const { sectionName, key, value } = payload;
 				//Find section
 				const section = state?.translated?.find((section) => section.name === sectionName);
-				if (!section) return onError('InvalidSection');
-				
-				console.log('TODO: process change')
+				if (!section || !section?.data || !Array.isArray(section.data)) return onError('InvalidSection');
 
-				return onSucces(state);
+				//Find the item with the same key
+				const targetItem = section.data.find((item) => item.key === key);
+				if (!targetItem) return onError('InvalidKey');
+
+				//create new section with changed value
+				const newSection = {
+					...section,
+					data: section.data.map((item) => {
+						if (item.key === key) {
+							//This item is the one that needs changing
+							return { ...item, value: value };
+						} else {
+							return item;
+						}
+					}),
+				};
+
+				//Change section in state
+				const newState = {
+					...state,
+					translated: state.translated.map((sect) => {
+						if (sect.name !== sectionName) return sect;
+						return newSection;
+					}),
+				};
+
+				return onSucces(newState);
 			}
 
 			default: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaCheck, FaExclamationTriangle, FaTimes } from 'react-icons/fa';
 import useClickOutside from './useClickOutside';
@@ -13,17 +13,11 @@ export default function useConfirm({ message, title, callback } = {}) {
 	function Confirm() {
 		const dialogReference = useRef();
 		useClickOutside(dialogReference, () => setOpen(false));
-		const [confirmed, setConfirmed] = useState(false);
-		const onConfirm = () => {
-			setConfirmed(() => true);
-			callback?.();
-		};
 
-		useEffect(() => {
-			if (confirmed === true) {
-				closeConfirm();
-			}
-		}, [confirmed]);
+		const onConfirm = () => {
+			callback?.();
+			closeConfirm();
+		};
 
 		if (isOpen) {
 			return (
