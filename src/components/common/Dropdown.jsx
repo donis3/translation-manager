@@ -26,7 +26,7 @@ export default function Dropdown({ text, children, timeout, ...props }) {
 			</div>
 			<div className='flex justify-center relative'>
 				<ul
-					className={`absolute top-1 transition-transform origin-top p-2 border flex flex-col items-center gap-2  bg-base-100 z-50 shadow-md rounded-md min-w-[100px] ${
+					className={`absolute top-1 transition-transform origin-top p-2 border flex flex-col items-center gap-2  bg-base-100 z-50 shadow-md rounded-md min-w-[100px] max-h-[500px] overflow-y-auto ${
 						isActive ? 'scale-y-100' : 'scale-y-0'
 					}`}
 				>

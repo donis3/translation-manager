@@ -64,7 +64,10 @@
 		"confirmResetMessage": "This action will reset all translation values to default.",
 		"confirmDeleteTitle": "Delete Translation?",
 		"confirmDeleteMessage": "This action will delete all saved data. You will lose all progress. Please make sure you've downloaded your work before taking this action.",
-		"mainSectionName": "Main Section"
+		"mainSectionName": "Main Section",
+		"loadErrorText": "The translation file couldn't be parsed. Please make sure you've loaded a valid json file.",
+		"loadErrorTitle": "Error!",
+		"loadErrorBtn": "Start Over"
 	},
 
 	"notfound": {
@@ -94,5 +97,8 @@
 	"success": {
 		"start": "Data successfully loaded",
 		"initialize": "Data successfully loaded, starting new translation. Good luck!"
+	},
+	"process": {
+		"recursionLimit": "Max JSON depth of {{limit}} reached. Unable to process json file. Please reduce depth"
 	}
 }

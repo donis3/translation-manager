@@ -6,5 +6,5 @@ export default function useAppDefaults() {
 		target: null,
 	};
 
-	return { files, data: {}, language: null, filename: null, loadedAt: null };
+	return { files, reference: [], translated: [], language: null, filename: null, loadedAt: null };
 }
