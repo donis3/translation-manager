@@ -21,7 +21,7 @@ export default function useAppReducer() {
 	function generateTranslated(originalFileContents, targetFileContents) {
 		let original = JSON.parse(originalFileContents);
 		let target = null;
-		//Dont crash app if target failes to parse. Target is optional
+		//Dont crash app if target fails to parse. Target is optional
 		try {
 			if (targetFileContents) target = JSON.parse(targetFileContents);
 		} catch (error) {}
@@ -90,6 +90,54 @@ export default function useAppReducer() {
 			case 'deleteAll': {
 				//Revert state back to default
 				return onSucces(defaultData);
+			}
+
+			/**
+			 * Takes section and key params in payload
+			 * Resets the given item back to its initial value
+			 */
+			case 'resetItem': {
+				//Validate
+				const { section: sectionName, key } = payload;
+				const { original, target } = state?.files || {};
+				if (!original?.content || !target?.content) return onError('MissingData');
+				if (!key) return onError('InvalidData');
+				//Find requested section
+				const section = state?.translated?.find((s) => s.name === sectionName);
+				if (!section) return onError('InvalidSection');
+				//Generate original translated data
+				const initialSections = generateTranslated(original.content, target.content);
+				if (!initialSections) return onError('MissingData');
+				//Find original section
+				const originalSection = initialSections?.find((s) => s.name === sectionName);
+				if (!originalSection) return onError('MissingData');
+				//Find requested key's original value
+				const originalItem = originalSection.data?.find((item) => item.key === key);
+				if (!originalItem) return onError('MissingData');
+
+				//Create new section but get original data for this key
+				const newSection = {
+					...section,
+					data: section.data.map((item) => {
+						if (item.key !== key) return item;
+						return originalItem;
+					}),
+				};
+
+				//create new state with modified section
+				return onSucces({
+					...state,
+					translated: state.translated.map((s) => (s.name === sectionName ? newSection : s)),
+				});
+			}
+
+			/**
+			 * Add a new empty key at given section
+			 * takes a key (string)
+			 */
+			case 'addItem': {
+				console.log(payload);
+				return onError();
 			}
 
 			case 'deleteItem': {

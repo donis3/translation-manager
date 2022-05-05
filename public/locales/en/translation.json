@@ -72,7 +72,8 @@
 		"loadErrorTitle": "Error!",
 		"loadErrorBtn": "Start Over",
 		"copyText": "Copy reference value as translation",
-		"deleteKey": "Delete this item"
+		"deleteKey": "Delete this item",
+		"resetText": "Reset this item to its initial value"
 	},
 
 	"notfound": {
@@ -98,7 +99,8 @@
 		"fileRequired": "File is required",
 		"required": "This field is required",
 		"minLength": "Must be at least {{length}} characters",
-		"deleteItem": "{{item}} couldn't be deleted."
+		"deleteItem": "\"{{item}}\" couldn't be deleted.",
+		"resetItem": "\"{{item}}\" couldn't be reset."
 	},
 	"success": {
 		"start": "Data successfully loaded",

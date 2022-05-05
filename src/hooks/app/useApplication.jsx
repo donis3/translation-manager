@@ -83,7 +83,7 @@ export default function useApplication() {
 	 * Calc percentage
 	 */
 	function calculateStats(sectionsArray) {
-		let result = { total: 0, translated: 0, percentage: 0 };
+		let result = { total: 0, translated: 0, percentage: 0, completedSections: [] };
 		if (!Array.isArray(sectionsArray)) return result;
 
 		//Calculate total & translated
@@ -97,12 +97,20 @@ export default function useApplication() {
 					return total;
 				}, 0);
 
-				//Add to total stats
-				return { total: acc.total + itemsInSection, translated: acc.translated + translatedCount };
+				const newAcc = {
+					...acc,
+					total: acc.total + itemsInSection,
+					translated: acc.translated + translatedCount,
+				};
+				if (translatedCount >= itemsInSection) {
+					newAcc.completedSections.push(section.name);
+				}
+				return newAcc;
 			},
-			{ total: 0, translated: 0 }
+			{ total: 0, translated: 0, completedSections: [] }
 		);
 		result = { ...result, ...translationStats };
+
 		//Calc percentage
 		if (result.total > 0 && result.translated > 0) {
 			result.percentage = Math.ceil((result.translated / result.total) * 100 * 100) / 100;
@@ -127,6 +135,11 @@ export default function useApplication() {
 		dispatch({ type: 'deleteItem', payload: { section, key }, success, error });
 	}
 
+	function resetItem(section, key) {
+		const error = () => toast.error(t('error.resetItem', { item: key }), { toastId: 'resetItem' });
+		dispatch({ type: 'resetItem', payload: { section, key }, error });
+	}
+
 	//=========================// Export //=========================//
 	return {
 		app,
@@ -134,6 +147,6 @@ export default function useApplication() {
 		getSectionItems,
 		handleChange,
 		stats,
-		actions: { reset: resetData, deleteData, deleteItem },
+		actions: { reset: resetData, deleteData, deleteItem, resetItem },
 	};
 }

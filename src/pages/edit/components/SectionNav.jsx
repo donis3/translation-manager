@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { ImArrowLeft as PreviousIcon, ImArrowRight as NextIcon } from 'react-icons/im';
 import Dropdown from '../../../components/common/Dropdown';
 
-
 export default function SectionNav({ setSectionTo, sectionNav }) {
 	const { t } = useTranslation();
 	if (!sectionNav || !Array.isArray(sectionNav?.all) || sectionNav.all.length <= 1) return <></>;
@@ -12,9 +11,9 @@ export default function SectionNav({ setSectionTo, sectionNav }) {
 	if (!sectionName || sectionName.length === 0) sectionName = t('edit.mainSectionName');
 
 	return (
-		<div className='flex flex-wrap gap-5 items-center'>
+		<div className='flex flex-wrap gap-5 items-center bg-base-200 p-2 rounded-md bg-opacity-50'>
 			{/* Previous Button */}
-			<div className='w-1/4 min-w-fit'>
+			<div className='w-1/4 min-w-fit  flex justify-start'>
 				{sectionNav.prev !== null && (
 					<button
 						type='button'
@@ -29,7 +28,7 @@ export default function SectionNav({ setSectionTo, sectionNav }) {
 			</div>
 			{/* Section Selector */}
 			<div className='flex-1 '>
-				<Dropdown text={sectionName} className='btn btn-primary btn-outline'>
+				<Dropdown text={sectionName} className='btn btn-ghost gap-2'>
 					{sectionNav.all.map((section, i) => {
 						let sectionTxt = section ? section : t('edit.mainSectionName');
 						let isActive = section === sectionNav.active;
@@ -42,7 +41,7 @@ export default function SectionNav({ setSectionTo, sectionNav }) {
 				</Dropdown>
 			</div>
 			{/* Next Button */}
-			<div className='w-1/4 min-w-fit'>
+			<div className='w-1/4 min-w-fit flex justify-end'>
 				{sectionNav.next !== null && (
 					<button
 						type='button'

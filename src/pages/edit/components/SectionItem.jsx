@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { FaKey as KeyIcon, FaCopy, FaTrashAlt } from 'react-icons/fa';
+import { FaUndo as ResetIcon, FaCopy, FaTrashAlt } from 'react-icons/fa';
 import { BsSquare as KeyInProgress, BsCheck2Square as KeyComplete } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
 
-export default function SectionItem({ sectionName, item, handleChange, handleDelete, ...props }) {
+export default function SectionItem({ sectionName, item, handleChange, handleDelete, handleReset, ...props }) {
 	const [showDelete, setShowDelete] = useState(false);
 	const { t } = useTranslation();
 	if (!item || !handleChange) return <></>;
@@ -28,10 +28,15 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 	const handleCopy = () => {
 		handleChange(sectionName, key, value);
 	};
+
+	const onResetItem = () => {
+		handleReset?.(sectionName, key);
+	};
 	return (
 		<div className='flex flex-col translate-item relative'>
 			<DeleteConfirm show={showDelete} callback={handleDeleteConfirm} cancel={() => setShowDelete(false)} />
 			<div className='flex justify-between items-center'>
+				{/* Key Text Display */}
 				<div
 					className={`badge capitalize gap-2 z-10 font-mono text-xs ${
 						translated ? 'badge-success bg-opacity-50' : 'badge-ghost'
@@ -41,10 +46,17 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 					{translated ? <KeyComplete /> : <KeyInProgress />}
 					{keyText}
 				</div>
+				{/* Actions */}
 				<div>
+					{/* Copy Button */}
 					<button type='button' className='btn btn-xs btn-ghost' title={t('edit.copyText')} onClick={handleCopy}>
 						<FaCopy />
 					</button>
+					{/* Reset Button */}
+					<button type='button' className='btn btn-xs btn-ghost' title={t('edit.resetText')} onClick={onResetItem}>
+						<ResetIcon />
+					</button>
+					{/* Delete Button */}
 					<button
 						type='button'
 						className='btn btn-xs btn-ghost'
@@ -81,6 +93,8 @@ SectionItem.defaultProps = {
 	sectionName: '',
 	item: null,
 	handleChange: null,
+	handleDelete: null,
+	handleReset: null,
 };
 
 function DeleteConfirm({ callback = null, show = false, cancel = null }) {
