@@ -6,6 +6,7 @@ import useIntl from '../../hooks/common/useIntl';
 import useTextFns from '../../hooks/common/useTextFns';
 import { Link } from 'react-router-dom';
 
+
 export default function Home() {
 	const { t } = useTranslation();
 	const [app] = useContext(AppContext);
@@ -15,6 +16,7 @@ export default function Home() {
 
 	return (
 		<div className='p-2 w-full max-w-2xl h-full relative'>
+			
 			{/* Intro Text */}
 			<div>
 				<h1 className='text-2xl font-semibold'>{t('home.title')}</h1>

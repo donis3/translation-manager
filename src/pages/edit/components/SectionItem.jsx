@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { FaUndo as ResetIcon, FaCopy, FaTrashAlt } from 'react-icons/fa';
 import { BsSquare as KeyInProgress, BsCheck2Square as KeyComplete } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
+import Tip from '../../../components/common/Tip';
 
 export default function SectionItem({ sectionName, item, handleChange, handleDelete, handleReset, ...props }) {
 	const [showDelete, setShowDelete] = useState(false);
 	const { t } = useTranslation();
+
 	if (!item || !handleChange) return <></>;
 	const { translated, key, value, path } = item;
 	const isLargeText = value.length > 50;
@@ -32,6 +34,7 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 	const onResetItem = () => {
 		handleReset?.(sectionName, key);
 	};
+
 	return (
 		<div className='flex flex-col translate-item relative'>
 			<DeleteConfirm show={showDelete} callback={handleDeleteConfirm} cancel={() => setShowDelete(false)} />
@@ -49,22 +52,24 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 				{/* Actions */}
 				<div>
 					{/* Copy Button */}
-					<button type='button' className='btn btn-xs btn-ghost' title={t('edit.copyText')} onClick={handleCopy}>
-						<FaCopy />
-					</button>
+					<Tip title={t('edit.copyText')}>
+						<button type='button' className='btn btn-xs btn-ghost' onClick={handleCopy}>
+							<FaCopy />
+						</button>
+					</Tip>
+
 					{/* Reset Button */}
-					<button type='button' className='btn btn-xs btn-ghost' title={t('edit.resetText')} onClick={onResetItem}>
-						<ResetIcon />
-					</button>
+					<Tip title={t('edit.resetText')}>
+						<button type='button' className='btn btn-xs btn-ghost' onClick={onResetItem}>
+							<ResetIcon />
+						</button>
+					</Tip>
 					{/* Delete Button */}
-					<button
-						type='button'
-						className='btn btn-xs btn-ghost'
-						title={t('edit.deleteKey')}
-						onClick={() => setShowDelete(true)}
-					>
-						<FaTrashAlt />
-					</button>
+					<Tip title={t('edit.deleteKey')}>
+						<button type='button' className='btn btn-xs btn-ghost' onClick={() => setShowDelete(true)}>
+							<FaTrashAlt />
+						</button>
+					</Tip>
 				</div>
 			</div>
 			{value && <label className='text-xs rounded-md leading-relaxed  p-2 font-medium indent-3'>{value}</label>}

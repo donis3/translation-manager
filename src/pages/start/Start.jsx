@@ -47,7 +47,12 @@ export default function Start() {
 	/**
 	 * Call when target file load event triggered
 	 */
-	const loadTarget = (file) => setFormState((state) => ({ ...state, target: file }));
+	const loadTarget = (file) => {
+		setFormState((state) => ({ ...state, target: file }));
+		if (file && file?.name) {
+			setRefValue('filename', removeExtension(file.name));
+		}
+	};
 
 	/**
 	 * Form submit handler

@@ -140,6 +140,17 @@ export default function useApplication() {
 		dispatch({ type: 'resetItem', payload: { section, key }, error });
 	}
 
+	function addItem(path) {
+		if (!path || !Array.isArray(path)) return;
+		const action = {
+			type: 'addItem',
+			payload: path,
+			success: () => toast.success(t('success.addItem', { item: path.join('.') }), { toastId: 'addItem' }),
+			error: () => toast.error(t('error.addItem', { item: path.join('.') }), { toastId: 'addItem' }),
+		};
+		dispatch(action);
+	}
+
 	//=========================// Export //=========================//
 	return {
 		app,
@@ -147,6 +158,6 @@ export default function useApplication() {
 		getSectionItems,
 		handleChange,
 		stats,
-		actions: { reset: resetData, deleteData, deleteItem, resetItem },
+		actions: { reset: resetData, deleteData, deleteItem, resetItem, addItem },
 	};
 }

@@ -39,7 +39,9 @@
 		"next": "Next",
 		"deleteConfirm": "Are you sure?",
 		"yes": "Yes",
-		"no": "No"
+		"no": "No",
+		"new": "New",
+		"add": "Add"
 	},
 	"home": {
 		"title": "Managing translation files made easy!",
@@ -73,7 +75,12 @@
 		"loadErrorBtn": "Start Over",
 		"copyText": "Copy reference value as translation",
 		"deleteKey": "Delete this item",
-		"resetText": "Reset this item to its initial value"
+		"resetText": "Reset this item to its initial value",
+		"newItemLabel": "Translation Key",
+		"newItemExample": "Full path to translation key. Use dots (.) to go deeper. Example: home.title",
+		"newItemPath": "Path: {{path}}",
+		"newItemDefaultKey": "new",
+		"newItemEmptyError": "Invalid translation key."
 	},
 
 	"notfound": {
@@ -100,14 +107,16 @@
 		"required": "This field is required",
 		"minLength": "Must be at least {{length}} characters",
 		"deleteItem": "\"{{item}}\" couldn't be deleted.",
-		"resetItem": "\"{{item}}\" couldn't be reset."
+		"resetItem": "\"{{item}}\" couldn't be reset.",
+		"addItem": "\"{{item}}\" couldn't be added."
 	},
 	"success": {
 		"start": "Data successfully loaded",
 		"initialize": "Data successfully loaded, starting new translation. Good luck!",
 		"reset": "Translation data have been reset back to initial state.",
 		"deleteAll": "All translation data have been deleted.",
-		"deleteItem": "{{item}} successfully deleted"
+		"deleteItem": "{{item}} successfully deleted",
+		"addItem": "{{item}} successfully added"
 	},
 	"process": {
 		"recursionLimit": "Max JSON depth of {{limit}} reached. Unable to process json file. Please reduce depth"

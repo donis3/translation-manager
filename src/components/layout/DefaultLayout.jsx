@@ -7,6 +7,7 @@ import Menu from '../menu/Menu';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 export default function DefaultLayout({ children }) {
 	const { t } = useTranslation();
 	useTitle(t('app.name'), false);

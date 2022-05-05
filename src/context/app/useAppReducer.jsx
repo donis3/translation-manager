@@ -136,8 +136,42 @@ export default function useAppReducer() {
 			 * takes a key (string)
 			 */
 			case 'addItem': {
-				console.log(payload);
-				return onError();
+				//Get the new item key
+				if (!Array.isArray(payload) || payload.length === 0) return onError('InvalidData');
+				const key = payload.join('.'); //Full path with dots home.title
+				let sectionName = '';
+				if (payload.length > 1) {
+					sectionName = payload[0];
+				}
+				//Find this section in reference data
+				let newState = { ...state };
+				if (!Array.isArray(newState?.translated)) newState.translated = [];
+				if (!Array.isArray(newState?.reference)) newState.reference = [];
+
+				let newItem = { key, value: '', path: [...payload] };
+				let section = { name: sectionName, data: [] }; //section data if not exists
+				//Check if requested section exists in state, if not , create it
+				if (newState.reference?.find((s) => s.name === sectionName)) {
+					section = newState.reference.find((s) => s.name === sectionName);
+				} else {
+					//this is a new section, add this to state
+					newState.reference = [...newState.reference, section];
+					newState.translated = [...newState.translated, section];
+				}
+				//Check if this key already exists
+				const existingItem = section.data.find((item) => item.key === key);
+				if (existingItem) return onError('DuplicateItem');
+				//Add to state
+				newState.reference = newState.reference.map((s) => {
+					if (s.name !== sectionName) return s;
+					return { ...s, data: [...s.data, newItem] };
+				});
+				newState.translated = newState.translated.map((s) => {
+					if (s.name !== sectionName) return s;
+					return { ...s, data: [...s.data, newItem] };
+				});
+
+				return onSucces(newState);
 			}
 
 			case 'deleteItem': {

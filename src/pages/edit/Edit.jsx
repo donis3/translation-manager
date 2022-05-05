@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import { AppContext } from '../../context/app/appContext';
+import React, { useEffect, useState } from 'react';
 import './Edit.css';
 import EditTitle from './components/EditTitle';
 import SectionNav from './components/SectionNav';
@@ -10,13 +9,17 @@ import useArrayPagination from '../../hooks/app/useArrayPagination';
 import useApplication from '../../hooks/app/useApplication';
 import { useNavigate } from 'react-router-dom';
 
+import NewItemForm from './components/NewItemForm';
+
 export default function Edit() {
-	const [app] = useContext(AppContext);
-	const { sectionNames, getSectionItems, handleChange, stats, actions } = useApplication();
+	const [showNewForm, setShowNewForm] = useState(false);
+
+	const { app, sectionNames, getSectionItems, handleChange, stats, actions } = useApplication();
 	const { pagination, changePage } = useArrayPagination({ name: 'translationSections', pages: sectionNames });
 	const items = getSectionItems(pagination.active);
 	const navigate = useNavigate();
 	const isSectionComplete = stats?.completedSections?.includes(pagination.name);
+	const newItemPath = pagination.active.length > 0 ? [pagination.active] : [];
 
 	useEffect(() => {
 		if (!app.loadedAt) {
@@ -24,6 +27,13 @@ export default function Edit() {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [app.loadedAt]);
+
+	useEffect(() => {
+		if (showNewForm) {
+			setShowNewForm(false);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [pagination.active]);
 
 	//If error
 	if (pagination.all.length === 0) return <EditError />;
@@ -33,7 +43,12 @@ export default function Edit() {
 			<EditTitle percent={stats.percentage} actions={actions} language={app?.language} />
 			<SectionNav setSectionTo={changePage} sectionNav={pagination} />
 
-			<Section name={pagination.name} isComplete={isSectionComplete}>
+			{/* Show new item form */}
+			{showNewForm && (
+				<NewItemForm path={newItemPath} onCancel={() => setShowNewForm(false)} handleAdd={actions?.addItem} />
+			)}
+
+			<Section name={pagination.name} isComplete={isSectionComplete} handleShowNewForm={() => setShowNewForm(true)}>
 				{items &&
 					items.map((item, i) => {
 						return (
