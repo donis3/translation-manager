@@ -1,4 +1,4 @@
-export const demoOriginal2 = {
+export const demoOriginal = {
 	name: 'demo',
 	author: 'File Author',
 	section1: {
@@ -22,18 +22,6 @@ export const demoOriginal2 = {
 	},
 };
 
-export const demoOriginal = {
-	notifications: {
-		success: {
-			addItem: '{{item}} successfully added',
-			updateItem: '{{item}} successfully added',
-		},
-		error: {
-			addItem: "{{item}} couldn't be added due to an error",
-			updateItem: "{{item}} couldn't be updated due to an error",
-		},
-	},
-};
 
 export const demoTarget = {
 	name: 'démo',

@@ -117,5 +117,13 @@
 	},
 	"process": {
 		"recursionLimit": "Max JSON depth of {{limit}} reached. Unable to process json file. Please reduce depth"
+	},
+	"about": {
+		"appDetailsTitle": "About {{appname}}",
+		"appDetails": "This application...",
+		"exampleTitle": "Translation File Example",
+		"exampleText": "Here is an example JSON translation file. This is the reference file that is being loaded when demo mode is activated.",
+		"githubTitle": "Project Repo",
+		"githubText": "Visit our <1>github repository</1> for more information"
 	}
 }

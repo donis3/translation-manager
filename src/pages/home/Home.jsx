@@ -7,6 +7,7 @@ import useIntl from '../../hooks/common/useIntl';
 import useTextFns from '../../hooks/common/useTextFns';
 import { Link } from 'react-router-dom';
 import useApplication from '../../hooks/app/useApplication';
+import About from './About';
 
 export default function Home() {
 	const { t } = useTranslation();
@@ -64,6 +65,9 @@ export default function Home() {
 			)}
 
 			{!showContinue && <ShowDemo handleClick={loadDemo}/>}
+
+			{!showContinue && <About />}
+			
 		</div>
 	);
 }
