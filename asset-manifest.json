@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/translation-manager/static/css/main.36bf3b49.css",
-    "main.js": "/translation-manager/static/js/main.7115ff8b.js",
+    "main.js": "/translation-manager/static/js/main.fab9bf89.js",
     "static/media/oswald-v47-latin-ext_latin-600.woff": "/translation-manager/static/media/oswald-v47-latin-ext_latin-600.d793e2e2f2920053765b.woff",
     "static/media/oswald-v47-latin-ext_latin-500.woff": "/translation-manager/static/media/oswald-v47-latin-ext_latin-500.c90e39f4e30c4a12dbce.woff",
     "static/media/oswald-v47-latin-ext_latin-700.woff": "/translation-manager/static/media/oswald-v47-latin-ext_latin-700.23887834a2d6dd380747.woff",
@@ -45,10 +45,10 @@
     "index.html": "/translation-manager/index.html",
     "static/media/getFetch.cjs": "/translation-manager/static/media/getFetch.c780682470504fffbd04.cjs",
     "main.36bf3b49.css.map": "/translation-manager/static/css/main.36bf3b49.css.map",
-    "main.7115ff8b.js.map": "/translation-manager/static/js/main.7115ff8b.js.map"
+    "main.fab9bf89.js.map": "/translation-manager/static/js/main.fab9bf89.js.map"
   },
   "entrypoints": [
     "static/css/main.36bf3b49.css",
-    "static/js/main.7115ff8b.js"
+    "static/js/main.fab9bf89.js"
   ]
 }
