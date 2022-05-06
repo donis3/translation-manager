@@ -3,8 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { BsFolder2Open as IncompleteIcon, BsFolderCheck as CompleteIcon } from 'react-icons/bs';
 import { FaPlus } from 'react-icons/fa';
 
+
 export default function Section({ name, isComplete, handleShowNewForm, children }) {
 	const { t } = useTranslation();
+	
+	
 	
 
 	return (

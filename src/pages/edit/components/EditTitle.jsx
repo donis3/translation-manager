@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaDownload } from 'react-icons/fa';
 import Dropdown from '../../../components/common/Dropdown';
+import useUi from '../../../context/ui/useUi';
 
 import useLangList from '../../../hooks/app/useLangList';
 import useConfirm from '../../../hooks/common/useConfirm';
@@ -9,6 +10,7 @@ import useConfirm from '../../../hooks/common/useConfirm';
 export default function EditTitle({ percent, actions, language, onDownload, filename }) {
 	const { t } = useTranslation();
 	const { getLanguage } = useLangList();
+	const { language: uiLanguage } = useUi();
 	const ConfirmReset = useConfirm({
 		title: t('edit.confirmResetTitle'),
 		message: t('edit.confirmResetMessage'),
@@ -27,6 +29,9 @@ export default function EditTitle({ percent, actions, language, onDownload, file
 	if (progressPercent > 100) progressPercent = 100;
 	if (progressPercent < 0) progressPercent = 0;
 
+	//Show translation language name in native or english depending on Ui language
+	const titleLangText = uiLanguage === 'en' ? getLanguage(language, false) : getLanguage(language, true);
+
 	return (
 		<div>
 			<ConfirmReset.Confirm />
@@ -37,7 +42,7 @@ export default function EditTitle({ percent, actions, language, onDownload, file
 				</div>
 			)}
 			<div className='flex items-end justify-between gap-5'>
-				<h1 className='text-3xl font-bold flex-1'>{t('edit.title', { language: getLanguage(language, true) })}</h1>
+				<h1 className='text-3xl font-bold flex-1'>{t('edit.title', { language: titleLangText })}</h1>
 				<span>{progressPercent}%</span>
 			</div>
 			<progress
