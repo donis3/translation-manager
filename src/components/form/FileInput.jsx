@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 import useFileUpload from '../../hooks/common/useFileUpload';
 import HiddenFile from './HiddenFile';
 import { FaCloudUploadAlt, FaExclamationTriangle, FaTrashAlt } from 'react-icons/fa';

@@ -12,7 +12,7 @@ i18n
 	.use(initReactI18next) // bind react-i18next to the instance
 	.init({
 		backend: {
-			loadPath: '/locales/{{lng}}/{{ns}}.json',
+			loadPath: './locales/{{lng}}/{{ns}}.json',
 		},
 		fallbackLng: 'en',
 		supportedLngs: languages,

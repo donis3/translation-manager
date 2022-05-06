@@ -5,7 +5,6 @@ import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import json from 'react-syntax-highlighter/dist/esm/languages/hljs/json';
 import { dark as highlightStyle } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { demoOriginal } from '../../config/demo';
-import { FaGithub } from 'react-icons/fa';
 SyntaxHighlighter.registerLanguage('json', json);
 
 export default function About() {
