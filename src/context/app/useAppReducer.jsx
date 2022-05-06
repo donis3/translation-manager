@@ -66,6 +66,13 @@ export default function useAppReducer() {
 						reference: generateReference(original?.content),
 						translated: generateTranslated(original?.content, target?.content),
 					};
+					//Check if we have main section, if not, add it
+					if (!newState.reference.find((s) => s.name === '')) {
+						newState.reference.unshift({ name: '', data: [] });
+					}
+					if (!newState.translated.find((s) => s.name === '')) {
+						newState.translated.unshift({ name: '', data: [] });
+					}
 
 					return onSucces(newState);
 				} catch (error) {
@@ -81,6 +88,13 @@ export default function useAppReducer() {
 						reference: generateReference(state?.files?.original?.content),
 						translated: generateTranslated(state?.files?.original?.content, state?.files?.target?.content),
 					};
+					//Check if we have main section, if not, add it
+					if (!newState.reference.find((s) => s.name === '')) {
+						newState.reference.unshift({ name: '', data: [] });
+					}
+					if (!newState.translated.find((s) => s.name === '')) {
+						newState.translated.unshift({ name: '', data: [] });
+					}
 					return onSucces(newState);
 				} catch (error) {
 					return onError('InvalidJsonData');

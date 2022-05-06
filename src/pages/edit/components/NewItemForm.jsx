@@ -12,7 +12,7 @@ export default function NewItemForm({ path, handleAdd, onCancel }) {
 
 	const { t } = useTranslation();
 
-    //========// Auto put current section as sectionName. when focused
+	//========// Auto put current section as sectionName. when focused
 	const initialValue = path.join('.') + '.';
 	const onFocus = () => {
 		if (inputRef.current.value === '' && initialValue.length > 1) {
@@ -27,15 +27,16 @@ export default function NewItemForm({ path, handleAdd, onCancel }) {
 	};
 	useClickOutside(inputRef, clear);
 
-    //========// Show parsed path on Change
+	//========// Show parsed path on Change
 	const onChange = () => {
 		const val = inputRef.current.value;
 		if (!val) return setParsedPath([]);
 		setParsedPath(val.split('.'));
 	};
 
-    //========// Submit form
-	const handleSubmit = () => {
+	//========// Submit form
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		const value = inputRef.current?.value;
 		if (!value || value.split('.').length === 0) {
 			setError(t('edit.newItemEmptyError'));
@@ -48,39 +49,42 @@ export default function NewItemForm({ path, handleAdd, onCancel }) {
 
 	return (
 		<div className='w-full p-3 bg-base-200 rounded-md'>
-			<div className='flex gap-3 items-end'>
-				<div className='flex-1'>
-					<Tip title={t('edit.newItemExample')}>
-						<label className='p-1 text-sm font-medium select-none flex items-center gap-1'>
-							{t('edit.newItemLabel')}
-							<FaQuestionCircle className='text-blue-800' />
-						</label>
-					</Tip>
-					<input
-						ref={inputRef}
-						type='text'
-						className='input input-bordered input-sm w-full'
-						placeholder={[...path, t('edit.newItemDefaultKey')].join('.')}
-						onFocus={onFocus}
-						onChange={onChange}
-					/>
+			<form onSubmit={handleSubmit}>
+				<div className='flex gap-3 items-end'>
+					<div className='flex-1'>
+						<Tip title={t('edit.newItemExample')}>
+							<label className='p-1 text-sm font-medium select-none flex items-center gap-1'>
+								{t('edit.newItemLabel')}
+								<FaQuestionCircle className='text-blue-800' />
+							</label>
+						</Tip>
+						<input
+							ref={inputRef}
+							type='text'
+							className='input input-bordered input-sm w-full'
+							placeholder={[...path, t('edit.newItemDefaultKey')].join('.')}
+							onFocus={onFocus}
+							onChange={onChange}
+						/>
+					</div>
+					<button type='submit' className='btn btn-sm btn-primary gap-1'>
+						<FaCheck />
+						{t('labels.add')}
+					</button>
+					<button type='button' className='btn btn-sm btn-ghost gap-1' onClick={onCancel}>
+						<FaTimes />
+						{t('labels.cancel')}
+					</button>
 				</div>
-				<button type='button' className='btn btn-sm btn-primary gap-1' onClick={handleSubmit}>
-					<FaCheck />
-					{t('labels.add')}
-				</button>
-				<button type='button' className='btn btn-sm btn-ghost gap-1' onClick={onCancel}>
-					<FaTimes />
-					{t('labels.cancel')}
-				</button>
-			</div>
-			<div className='p-1'>
-				{error && <p className='font-medium text-sm text-red-500'>{error}</p>}
 
-				{!error && (
-					<p className='font-mono text-sm font-thin'>{t('edit.newItemPath', { path: parsedPath.join(' > ') })}</p>
-				)}
-			</div>
+				<div className='p-1'>
+					{error && <p className='font-medium text-sm text-red-500'>{error}</p>}
+
+					{!error && (
+						<p className='font-mono text-sm font-thin'>{t('edit.newItemPath', { path: parsedPath.join(' > ') })}</p>
+					)}
+				</div>
+			</form>
 		</div>
 	);
 }
