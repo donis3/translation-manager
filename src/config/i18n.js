@@ -6,13 +6,14 @@ import config from './config';
 
 export const languages = ['en', 'tr'];
 
+
 i18n
 	.use(Backend)
 	.use(LanguageDetector)
 	.use(initReactI18next) // bind react-i18next to the instance
 	.init({
 		backend: {
-			loadPath: './locales/{{lng}}/{{ns}}.json',
+			loadPath: `${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`,
 		},
 		fallbackLng: 'en',
 		supportedLngs: languages,
