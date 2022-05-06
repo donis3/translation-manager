@@ -1,5 +1,5 @@
 const config = {
-	env: 'dev',
+	env: 'prod',
 	app: {
 		name: 'Translation Manager',
 		git: 'https://github.com/donis3/translation-manager',
