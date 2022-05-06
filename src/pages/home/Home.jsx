@@ -1,22 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { FaFeather, FaPlay } from 'react-icons/fa';
-import { AppContext } from '../../context/app/appContext';
+import { ImFilePlay as DemoIcon } from 'react-icons/im';
+
 import useIntl from '../../hooks/common/useIntl';
 import useTextFns from '../../hooks/common/useTextFns';
 import { Link } from 'react-router-dom';
-
+import useApplication from '../../hooks/app/useApplication';
 
 export default function Home() {
 	const { t } = useTranslation();
-	const [app] = useContext(AppContext);
+	const { app, loadDemo } = useApplication();
+
 	const { displayDate } = useIntl();
 	const { truncateFilename } = useTextFns();
 	const showContinue = app?.loadedAt ? true : false;
 
 	return (
 		<div className='p-2 w-full max-w-2xl h-full relative'>
-			
 			{/* Intro Text */}
 			<div>
 				<h1 className='text-2xl font-semibold'>{t('home.title')}</h1>
@@ -61,6 +62,23 @@ export default function Home() {
 					</div>
 				</div>
 			)}
+
+			{!showContinue && <ShowDemo handleClick={loadDemo}/>}
+		</div>
+	);
+}
+
+function ShowDemo({ handleClick = null } = {}) {
+	const { t } = useTranslation();
+
+	if (!handleClick) return <></>;
+	return (
+		<div className='flex flex-col items-center gap-y-3 mt-10'>
+			<button type='button' className='btn btn-lg btn-outline gap-1 min-w-[250px]' onClick={handleClick}>
+				<DemoIcon />
+				{t('home.demoBtn')}
+			</button>
+			<p className='text-center text-lg max-w-xs'>{t('home.demoText')}</p>
 		</div>
 	);
 }

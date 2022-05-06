@@ -48,7 +48,12 @@
 		"lead": "Load your original translation file and easily edit each key before downloading. Only json files are supported.",
 		"startText": "Start a new translation",
 		"continueText": "Continue translating <1>{{filename}}</1>",
-		"loadedOn": "loaded on <1>{{date}}</1>"
+		"loadedOn": "loaded on <1>{{date}}</1>",
+		"demoBtn": "Load Demo",
+		"demoText": "Load a demo translation file to see application in action!",
+		"demoSuccess": "Demo translation has been loaded!",
+		"demoFilename": "french-demo",
+		"demoError": "Demo translation couldn't be loaded."
 	},
 	"start": {
 		"title": "Start translation",

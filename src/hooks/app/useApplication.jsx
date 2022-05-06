@@ -2,8 +2,11 @@ import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { AppContext } from '../../context/app/appContext';
+import { demoOriginal, demoTarget, demoLanguage } from '../../config/demo.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function useApplication() {
+	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [app, dispatch] = useContext(AppContext);
 	const sectionNames = getSections(app?.reference);
@@ -151,6 +154,37 @@ export default function useApplication() {
 		dispatch(action);
 	}
 
+	function loadDemo() {
+		if (!demoOriginal) return;
+		const success = () => toast.success(t('home.demoSuccess'), { toastId: 'demo' });
+		const error = () => toast.error(t('home.demoError'), { toastId: 'demo' });
+		const demoFilename = t('home.demoFilename');
+		const originalFileDemo = { name: demoFilename + '.json', type: 'application/json', content: null };
+		let targetFileDemo = null;
+		try {
+			originalFileDemo.content = JSON.stringify(demoOriginal);
+			if (demoTarget) {
+				targetFileDemo = {
+					name: demoFilename + '.json',
+					type: 'application/json',
+					content: JSON.stringify(demoTarget),
+				};
+			}
+		} catch (error) {
+			return error();
+		}
+
+		const demoPayload = {
+			original: originalFileDemo,
+			target: targetFileDemo,
+			filename: demoFilename,
+			language: demoLanguage,
+		};
+
+		dispatch({ type: 'initialize', payload: demoPayload, success, error });
+		navigate('/edit');
+	}
+
 	//=========================// Export //=========================//
 	return {
 		app,
@@ -158,6 +192,7 @@ export default function useApplication() {
 		getSectionItems,
 		handleChange,
 		stats,
+		loadDemo: demoOriginal ? loadDemo : null,
 		actions: { reset: resetData, deleteData, deleteItem, resetItem, addItem },
 	};
 }

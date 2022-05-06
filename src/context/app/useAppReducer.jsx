@@ -208,10 +208,11 @@ export default function useAppReducer() {
 					});
 				}
 				//Check data length and if no items left in section, remove section
-				if (newRefSection.data.length === 0) {
+				//Unless its the main section (section === "")
+				if (newRefSection.data.length === 0 && section !== '') {
 					newReferenceArray = newReferenceArray.filter((sct) => sct.name !== section);
 				}
-				if (newTargetSection.data.length === 0) {
+				if (newTargetSection.data.length === 0 && section !== '') {
 					newTranslatedArray = newTranslatedArray.filter((sct) => sct.name !== section);
 				}
 
