@@ -13,7 +13,7 @@
 		"notfound": "Bulunamadı"
 	},
 	"footer": {
-		"copyright": "©{{year}} {{app}}",
+		"copyright": "©{{year}} {{app}} - v{{version}}",
 		"madeWithLove": "{{author}} tarafından <1/> ile yapıldı",
 		"themeLight": "Açık Tema",
 		"themeDark": "Koyu Tema"
@@ -118,7 +118,7 @@
 	},
 	"about": {
 		"appDetailsTitle": "{{appname}} Hakkında",
-		"appDetails": "Uygulama Hakkında Yazısı",
+		"appDetails": "Bu uygulama temelde bir json düzenleyici mantığıyla çalışmaktadır fakat asıl hedefi çeviri dosyalarını düzenlemektir. Düzenleme esnasında yaptığınız değişiklikler otomatik olarak kaydedilir. İndir butonuna bastığınızda, tüm veriler bir json dosyası biçiminde derlenir ve indirilir. Uygulama herhangi bir veri toplamaz, yüklediğiniz tüm dosyalar kendi bilgisayarınızda tarayıcı hafızasında kaydedilir. Uygulama çalışmak için internete gerek duymaz.",
 		"exampleTitle": "Örnek Çeviri Dosyası",
 		"exampleText": "Burada bir JSON çeviri dosyası örneği bulunmakta. Demo'yu yükle seçeneğine tıklandığında yüklenen referans dosyasının içeriğini burada inceleyebilirsiniz.",
 		"githubTitle": "Proje Repo'su",

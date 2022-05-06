@@ -11,6 +11,7 @@ export default function Footer() {
 	const footerData = {
 		year: new Date().getFullYear(),
 		app: t('app.name'),
+		version: config.app.version,
 	};
 
 	return (

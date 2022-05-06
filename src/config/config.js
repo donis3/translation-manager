@@ -5,6 +5,7 @@ const config = {
 		git: 'https://github.com/donis3/translation-manager',
 		author: 'Deniz Özkan',
 		authorUrl: 'https://github.com/donis3',
+		version: '0.1.0',
 
 		/**
 		 * Get local storage identifier for this key

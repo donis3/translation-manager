@@ -4,6 +4,7 @@ import Router from './Router';
 
 
 function App() {
+	
 	return (
 		<ContextWrapper>
 			<DefaultLayout>

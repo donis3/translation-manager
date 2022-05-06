@@ -13,7 +13,7 @@
 		"notfound": "Not Found"
 	},
 	"footer": {
-		"copyright": "©{{year}} {{app}}",
+		"copyright": "©{{year}} {{app}} - v{{version}}",
 		"madeWithLove": "Made with <1/> by {{author}}",
 		"themeLight": "Light Mode",
 		"themeDark": "Dark Mode"
@@ -120,7 +120,7 @@
 	},
 	"about": {
 		"appDetailsTitle": "About {{appname}}",
-		"appDetails": "This application...",
+		"appDetails": "This application is a basically a json file editor but specifically made for translation files. Any changes you make is saved automatically and everything is compiled back to a json file when download button is clicked. Application doesn’t collect any data. Everything you load is saved in your own browser. Application doesn’t require internet to run.",
 		"exampleTitle": "Translation File Example",
 		"exampleText": "Here is an example JSON translation file. This is the reference file that is being loaded when demo mode is activated.",
 		"githubTitle": "Project Repo",
