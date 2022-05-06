@@ -1,0 +1,129 @@
+{
+	"ver": "Translation version 0.1.0",
+	"app": {
+		"name": "Translation Manager",
+		"author": "Deniz Ozkan"
+	},
+	"routes": {
+		"home": "Start",
+		"help": "Help",
+		"about": "About",
+		"target": "Options",
+		"edit": "Translate",
+		"notfound": "Not Found"
+	},
+	"footer": {
+		"copyright": "©{{year}} {{app}} - v{{version}}",
+		"madeWithLove": "Made with <1/> by {{author}}",
+		"themeLight": "Light Mode",
+		"themeDark": "Dark Mode"
+	},
+	"applicationError": {
+		"title": "Application Crashed!",
+		"message": "Application crashed due to an error. Please contact us if the problem persists.",
+		"button": "Go Back"
+	},
+	"labels": {
+		"start": "Start",
+		"continue": "Continue",
+		"load": "Load",
+		"upload": "Upload",
+		"optional": "(Optional)",
+		"actions": "Actions",
+		"download": "Download",
+		"reset": "Reset",
+		"deleteAll": "Delete All Data",
+		"confirm": "Confirm",
+		"cancel": "Cancel",
+		"previous": "Previous",
+		"next": "Next",
+		"deleteConfirm": "Are you sure?",
+		"yes": "Yes",
+		"no": "No",
+		"new": "New",
+		"add": "Add"
+	},
+	"home": {
+		"title": "Managing translation files made easy!",
+		"lead": "Load your original translation file and easily edit each key before downloading. Only json files are supported.",
+		"startText": "Start a new translation",
+		"continueText": "Continue translating <1>{{filename}}</1>",
+		"loadedOn": "loaded on <1>{{date}}</1>",
+		"demoBtn": "Load Demo",
+		"demoText": "Load a demo translation file to see application in action!",
+		"demoSuccess": "Demo translation has been loaded!",
+		"demoFilename": "french-demo",
+		"demoError": "Demo translation couldn't be loaded."
+	},
+	"start": {
+		"title": "Start translation",
+		"lead": "Load an existing language file (json) to start editing. You can optionally provide a target file if you already have a partial translation that you want to keep. Reference file and target file will be merged and any keys that aren't in the original file will be discarded.",
+		"formTitle": "Translation Options",
+		"originalFile": "Reference File",
+		"originalFileAlt": "Original file that needs translating",
+		"targetFile": "Target File",
+		"targetFileAlt": "If you already have a partially translated file, load it here. All keys that match the original file will be kept.",
+		"filename": "Filename",
+		"filenameAlt": "New translation file will be saved with this name.",
+		"language": "Language",
+		"languageAlt": "What language will the prepared translation file be? This option is only for convenience and doesn't effect the file."
+	},
+	"edit": {
+		"title": "{{language}} Translation",
+		"confirmResetTitle": "Reset all fields?",
+		"confirmResetMessage": "This action will reset all translation values to default.",
+		"confirmDeleteTitle": "Delete Translation?",
+		"confirmDeleteMessage": "This action will delete all saved data. You will lose all progress. Please make sure you've downloaded your work before taking this action.",
+		"mainSectionName": "Main Section",
+		"loadErrorText": "The translation file couldn't be parsed. Please make sure you've loaded a valid json file.",
+		"loadErrorTitle": "Error!",
+		"loadErrorBtn": "Start Over",
+		"copyText": "Copy reference value as translation",
+		"deleteKey": "Delete this item",
+		"resetText": "Reset this item to its initial value",
+		"newItemLabel": "Translation Key",
+		"newItemExample": "Full path to translation key. Use dots (.) to go deeper. Example: home.title",
+		"newItemPath": "Path: {{path}}",
+		"newItemDefaultKey": "new",
+		"newItemEmptyError": "Invalid translation key."
+	},
+
+	"notfound": {
+		"title": "404 / Page not found",
+		"lead": "Requested page couldn't be found"
+	},
+
+	"error": {
+		"fail": "Request failed.",
+		"InvalidJsonData": "Invalid json data",
+		"InvalidFiletype": "Invalid Filetype",
+		"EmptyFile": "Empty File",
+		"fileRequired": "File is required",
+		"required": "This field is required",
+		"minLength": "Must be at least {{length}} characters",
+		"deleteItem": "\"{{item}}\" couldn't be deleted.",
+		"resetItem": "\"{{item}}\" couldn't be reset.",
+		"addItem": "\"{{item}}\" couldn't be added.",
+		"downloadFailed": "Download failed. Error code: {{code}}"
+	},
+	"success": {
+		"start": "Data successfully loaded",
+		"initialize": "Data successfully loaded, starting new translation. Good luck!",
+		"reset": "Translation data have been reset back to initial state.",
+		"deleteAll": "All translation data have been deleted.",
+		"deleteItem": "{{item}} successfully deleted",
+		"addItem": "{{item}} successfully added",
+		"download": "{{filename}} is being downloaded."
+	},
+	"process": {
+		"recursionLimit": "Max JSON depth of {{limit}} reached. Unable to process json file. Please reduce depth"
+	},
+	"about": {
+		"appDetailsTitle": "About {{appname}}",
+		"appDetails": "This application is a basically a json file editor but specifically made for translation files. Any changes you make is saved automatically and everything is compiled back to a json file when download button is clicked. Application doesn’t collect any data. Everything you load is saved in your own browser. Application doesn’t require internet to run.",
+		"exampleTitle": "Translation File Example",
+		"exampleText": "Here is an example JSON translation file. This is the reference file that is being loaded when demo mode is activated.",
+		"githubTitle": "Project Repo",
+		"githubText": "Visit our <1>github repository</1> for more information"
+	}
+}

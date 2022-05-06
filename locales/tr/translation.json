@@ -1,0 +1,127 @@
+{
+	"ver": "Çeviri Versiyonu 0.1.0",
+	"app": {
+		"name": "Çeviri Düzenleyici",
+		"author": "Deniz Özkan"
+	},
+	"routes": {
+		"home": "Başla",
+		"help": "Yardım",
+		"about": "Hakkında",
+		"target": "Seçenekler",
+		"edit": "Çevir",
+		"notfound": "Bulunamadı"
+	},
+	"footer": {
+		"copyright": "©{{year}} {{app}} - v{{version}}",
+		"madeWithLove": "{{author}} tarafından <1/> ile yapıldı",
+		"themeLight": "Açık Tema",
+		"themeDark": "Koyu Tema"
+	},
+	"applicationError": {
+		"title": "Uygulama Durduruldu!",
+		"message": "Bir hata sebebiyle uygulama durduruldu. Eğer sorun devam ederse lütfen bizimle iletişime geçin.",
+		"button": "Geri Git"
+	},
+	"labels": {
+		"start": "Başla",
+		"continue": "Devam Et",
+		"load": "Yükle",
+		"upload": "Karşıya Yükle",
+		"optional": "(Opsiyonel)",
+		"actions": "İşlemler",
+		"download": "İndir",
+		"reset": "Sıfırla",
+		"deleteAll": "Herşeyi Sil",
+		"confirm": "Onayla",
+		"cancel": "İptal",
+		"previous": "Geri",
+		"next": "İleri",
+		"deleteConfirm": "Emin misiniz?",
+		"yes": "Evet",
+		"no": "Hayır",
+		"new": "Yeni",
+		"add": "Ekle"
+	},
+	"home": {
+		"title": "Çeviri Düzenleme'de yeni bir soluk!",
+		"lead": "Orijinal çeviri dosyanızı yükleyin ve kolayca düzenleyin. Yalnızca json çeviri dosyaları desteklenir.",
+		"startText": "Yeni bir çeviriye başlayın",
+		"continueText": "<1>{{filename}}</1> çevirisine devam edin",
+		"loadedOn": "Yükleme tarihi: <1>{{date}}</1>",
+		"demoBtn": "Demo'yu Yükle",
+		"demoText": "Uygulamanın nasıl çalıştığını görmek için, örnek çeviri dosyasını yükleyin",
+		"demoSuccess": "Örnek Çeviri dosyası yüklendi!",
+		"demoFilename": "fransızca-örnek",
+		"demoError": "Örnek çeviri yüklenemedi."
+	},
+	"start": {
+		"title": "Çeviri Düzenlemeye Başla",
+		"lead": "Çevirmek istediğiniz refereans çeviri dosyasını (json) yükleyin ve düzenlemeye başlayın. Eğer halihazırda bir kısmı çevrilmiş bir hedef dosyanız varsa, onu da yükleyebilirsiniz. Böylelikle hedef dosyadaki çeviriler dikkate alınarak uygulama başlatılır.",
+		"formTitle": "Çeviri Seçenekleri",
+		"originalFile": "Referans Dosya",
+		"originalFileAlt": "Çevirisi yapılacak orijinal dosya",
+		"targetFile": "Hedef Dosya",
+		"targetFileAlt": "Bu dosyadaki, referansla eşleşen çeviriler dikkate alınır ve yüklenir",
+		"filename": "Dosya Adı",
+		"filenameAlt": "İndirilecek dosyaya bu isimi kullanır",
+		"language": "Dil",
+		"languageAlt": "Çevirilen hedef dili seçin. Bu yalnızca size hatırlatıcı olacaktır, dosyalara herhangi bir etkisi yoktur."
+	},
+	"edit": {
+		"title": "{{language}} Çeviri",
+		"confirmResetTitle": "Tümünü sıfırla?",
+		"confirmResetMessage": "Bu işlem, tüm çevirileri başlangıç değerlerine geri döndürecektir.",
+		"confirmDeleteTitle": "Çeviriyi Sil?",
+		"confirmDeleteMessage": "Bu işlem, tüm verileri silecektir ve geri döndürülemez. Lütfen bu işlemden önce düzenlediğiniz dosyayı indirmeyi unutmayın.",
+		"mainSectionName": "Başlangıç Bölümü",
+		"loadErrorText": "Çeviri dosyası okunamadı. Lütfen geçerli bir JSON dosyası yüklediğinizden emin olun.",
+		"loadErrorTitle": "Hata!",
+		"loadErrorBtn": "Baştan Başla",
+		"copyText": "Referans değerini, çeviri olarak kopyala",
+		"deleteKey": "Öğeyi Sil",
+		"resetText": "Bu öğeyi, başlangıç değerine geri döndür",
+		"newItemLabel": "Çeviri Anahtarı",
+		"newItemExample": "Çeviri anahtarına giden yol.  Her seviye arasına nokta (.) koyun. Örnek: renkler.kirmizi",
+		"newItemPath": "Dizin: {{path}}",
+		"newItemDefaultKey": "yeni",
+		"newItemEmptyError": "Hatalı çeviri anahtarı."
+	},
+	"notfound": {
+		"title": "404 / Sayfa Bulunamadı",
+		"lead": "İstenilen sayfa bulunamadı."
+	},
+	"error": {
+		"fail": "İşlem başarısız",
+		"InvalidJsonData": "Hatalı Json verisi",
+		"InvalidFiletype": "Hatalı Dosya Türü",
+		"EmptyFile": "Dosya boş",
+		"fileRequired": "Dosya zorunlur",
+		"required": "Bu alan zorunludur",
+		"minLength": "En az {{length}} karakter olmalı",
+		"deleteItem": "\"{{item}}\" silinemedi",
+		"resetItem": "\"{{item}}\" sıfırlanamadı",
+		"addItem": "\"{{item}}\" eklenemedi",
+		"downloadFailed": "İndirme başarısız. Hata kodu:{{code}}"
+	},
+	"success": {
+		"start": "Veri yükleme başarılı",
+		"initialize": "Veriler başarıyla yüklendi, yeni çeviriye başlanıyor. Bol şans!",
+		"reset": "Çeviri verileri başarıyla sıfırlandı.",
+		"deleteAll": "Tüm çeviri verileri başarıyla silindi",
+		"deleteItem": "{{item}} başarıyla silindi",
+		"addItem": "{{item}} başarıyla eklendi",
+		"download": "{{filename}} indiriliyor"
+	},
+	"process": {
+		"recursionLimit": "Maksimum JSON derinliği olan {{limit}}'e erişildi ve program durduruldu. Json dosyası işlenemedi. Lütfen json dosyanızı düzenledikten sonra yeniden deneyin"
+	},
+	"about": {
+		"appDetailsTitle": "{{appname}} Hakkında",
+		"appDetails": "Bu uygulama temelde bir json düzenleyici mantığıyla çalışmaktadır fakat asıl hedefi çeviri dosyalarını düzenlemektir. Düzenleme esnasında yaptığınız değişiklikler otomatik olarak kaydedilir. İndir butonuna bastığınızda, tüm veriler bir json dosyası biçiminde derlenir ve indirilir. Uygulama herhangi bir veri toplamaz, yüklediğiniz tüm dosyalar kendi bilgisayarınızda tarayıcı hafızasında kaydedilir. Uygulama çalışmak için internete gerek duymaz.",
+		"exampleTitle": "Örnek Çeviri Dosyası",
+		"exampleText": "Burada bir JSON çeviri dosyası örneği bulunmakta. Demo'yu yükle seçeneğine tıklandığında yüklenen referans dosyasının içeriğini burada inceleyebilirsiniz.",
+		"githubTitle": "Proje Repo'su",
+		"githubText": "Projemizin <1>github reposunu</1> ziyaret ederek daha fazla bilgi edinebilirsiniz."
+	}
+}
