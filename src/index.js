@@ -13,7 +13,7 @@ root.render(
 	<ErrorBoundary>
 		<Suspense fallback={<Loading />}>
 			<React.StrictMode>
-				<BrowserRouter>
+				<BrowserRouter basename={process.env.PUBLIC_URL}>
 					<App />
 				</BrowserRouter>
 			</React.StrictMode>

@@ -2,7 +2,7 @@
   "name": "translation-manager",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://donis3.github.io/translation-manager",
+  "homepage": "https://donis3.github.io/translation-manager/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
