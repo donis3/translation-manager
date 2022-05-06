@@ -87,16 +87,6 @@
 		"title": "404 / Page not found",
 		"lead": "Requested page couldn't be found"
 	},
-	"uploader": {
-		"reference": "Reference",
-		"filename": "✓ {{filename}}",
-		"referenceText": "Load the source file which will then be used to generate a new translation file or fill the gaps of an existing one.",
-		"uploadBtn": "Load",
-		"startBtn": "Start",
-		"InvalidFiletype": "⚠ Invalid Filetype",
-		"EmptyFile": "⚠ Empty File",
-		"InvalidJsonData": "⚠ Invalid JSON Data"
-	},
 
 	"error": {
 		"fail": "Request failed.",
@@ -108,7 +98,8 @@
 		"minLength": "Must be at least {{length}} characters",
 		"deleteItem": "\"{{item}}\" couldn't be deleted.",
 		"resetItem": "\"{{item}}\" couldn't be reset.",
-		"addItem": "\"{{item}}\" couldn't be added."
+		"addItem": "\"{{item}}\" couldn't be added.",
+		"downloadFailed": "Download failed. Error code: {{code}}"
 	},
 	"success": {
 		"start": "Data successfully loaded",
@@ -116,7 +107,8 @@
 		"reset": "Translation data have been reset back to initial state.",
 		"deleteAll": "All translation data have been deleted.",
 		"deleteItem": "{{item}} successfully deleted",
-		"addItem": "{{item}} successfully added"
+		"addItem": "{{item}} successfully added",
+		"download": "{{filename}} is being downloaded."
 	},
 	"process": {
 		"recursionLimit": "Max JSON depth of {{limit}} reached. Unable to process json file. Please reduce depth"

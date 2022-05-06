@@ -9,8 +9,10 @@ import useLangList from '../../hooks/app/useLangList';
 import useTextFns from '../../hooks/common/useTextFns';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import useStorage from '../../hooks/common/useStorage';
 
 export default function Start() {
+	const [lastLanguage, setLastLanguage] = useStorage('lastLanguage', { code: 'en' });
 	const [app, dispatch] = useContext(AppContext);
 	const { t } = useTranslation();
 	const { removeExtension } = useTextFns();
@@ -18,7 +20,7 @@ export default function Start() {
 	const [formState, setFormState] = useState({ original: null, target: null });
 	const [formErrors, setFormErrors] = useState({});
 	const inputRef = useRef({});
-	const formDefaults = { filename: '', language: 'en' };
+	const formDefaults = { filename: '', language: lastLanguage.code };
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -137,6 +139,11 @@ export default function Start() {
 		return errors === 0 ? formData : null;
 	}
 
+	function onLanguageChange(e) {
+		const newValue = e.target.value;
+		if (newValue && newValue !== lastLanguage.code) setLastLanguage({ code: newValue });
+	}
+
 	return (
 		<div className='p-2 w-full max-w-2xl'>
 			<div>
@@ -184,7 +191,8 @@ export default function Start() {
 								error={formErrors?.language}
 								options={selectLanguageArray}
 								alt={t('start.languageAlt')}
-								defaultValue='en'
+								defaultValue={formDefaults.language}
+								onChange={onLanguageChange}
 							/>
 
 							<button type='submit' className='btn btn-lg mt-5 btn-block btn-primary gap-2'>

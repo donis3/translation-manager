@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaFeather, FaPlay } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import useApplication from '../../hooks/app/useApplication';
 import LanguageSelector from '../common/LanguageSelector';
@@ -12,11 +13,17 @@ export default function Menu() {
 	return (
 		<ul className='flex gap-3 items-center px-3'>
 			<li>
-				<MenuItem route='/'>{t('routes.home')}</MenuItem>
+				<MenuItem route='/'>
+					<FaPlay className='mr-1' />
+					{t('routes.home')}
+				</MenuItem>
 			</li>
 			{app.loadedAt && (
 				<li>
-					<MenuItem route='/edit'>{t('routes.edit')}</MenuItem>
+					<MenuItem route='/edit'>
+						<FaFeather className='mr-1' />
+						{t('routes.edit')}
+					</MenuItem>
 				</li>
 			)}
 			<li className='ml-2 pl-2 border-l border-neutral-content'>

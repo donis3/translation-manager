@@ -6,7 +6,7 @@ import Dropdown from '../../../components/common/Dropdown';
 import useLangList from '../../../hooks/app/useLangList';
 import useConfirm from '../../../hooks/common/useConfirm';
 
-export default function EditTitle({ percent, actions, language }) {
+export default function EditTitle({ percent, actions, language, onDownload, filename }) {
 	const { t } = useTranslation();
 	const { getLanguage } = useLangList();
 	const ConfirmReset = useConfirm({
@@ -31,6 +31,11 @@ export default function EditTitle({ percent, actions, language }) {
 		<div>
 			<ConfirmReset.Confirm />
 			<ConfirmDelete.Confirm />
+			{filename && (
+				<div className='w-full'>
+					<p className='text-xs opacity-70'>{filename}.json</p>
+				</div>
+			)}
 			<div className='flex items-end justify-between gap-5'>
 				<h1 className='text-3xl font-bold flex-1'>{t('edit.title', { language: getLanguage(language) })}</h1>
 				<span>{progressPercent}%</span>
@@ -43,7 +48,7 @@ export default function EditTitle({ percent, actions, language }) {
 				max='100'
 			></progress>
 			<div className='flex items-center justify-between gap-5'>
-				<button type='button' className='btn btn-sm btn-primary gap-2'>
+				<button type='button' className='btn btn-sm btn-primary gap-2' onClick={onDownload}>
 					<FaDownload />
 					{t('labels.download')}
 				</button>
@@ -60,4 +65,6 @@ EditTitle.defaultProps = {
 	percent: 50,
 	actions: {},
 	language: 'en',
+	filename: '',
+	onDownload: () => console.log('Missing download handler'),
 };

@@ -57,7 +57,7 @@ export default function useAppReducer() {
 					const newState = {
 						...defaultData,
 						loadedAt: Date.now(),
-						filename: filename ? removeExtension(filename) : removeExtension(original?.name),
+						filename: filename ? filename : removeExtension(original?.name),
 						language: language ? language : 'en',
 						files: {
 							original: original,

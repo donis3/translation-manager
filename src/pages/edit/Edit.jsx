@@ -10,8 +10,10 @@ import useApplication from '../../hooks/app/useApplication';
 import { useNavigate } from 'react-router-dom';
 
 import NewItemForm from './components/NewItemForm';
+import useDownloadTranslation from '../../hooks/app/useDownloadTranslation';
 
 export default function Edit() {
+	const { initiateDownload } = useDownloadTranslation();
 	const [showNewForm, setShowNewForm] = useState(false);
 
 	const { app, sectionNames, getSectionItems, handleChange, stats, actions } = useApplication();
@@ -40,7 +42,13 @@ export default function Edit() {
 	//No Error
 	return (
 		<div className='p-2 w-full max-w-2xl mt-5 flex flex-col gap-y-10'>
-			<EditTitle percent={stats.percentage} actions={actions} language={app?.language} />
+			<EditTitle
+				percent={stats.percentage}
+				actions={actions}
+				language={app?.language}
+				onDownload={initiateDownload}
+				filename={app?.filename}
+			/>
 			<SectionNav setSectionTo={changePage} sectionNav={pagination} />
 
 			{/* Show new item form */}

@@ -48,7 +48,7 @@ export default function Home() {
 							<Trans i18nKey='home.continueText'>
 								Continue translating
 								<span className='font-semibold'>
-									{{ filename: truncateFilename(app.files.original.name, 12, '..') }}
+									{{ filename: truncateFilename(app.files.original.name, 20, '..') }}
 								</span>
 							</Trans>
 						</p>
