@@ -4,7 +4,7 @@ import { BsSquare as KeyInProgress, BsCheck2Square as KeyComplete } from 'react-
 import { useTranslation } from 'react-i18next';
 import Tip from '../../../components/common/Tip';
 
-export default function SectionItem({ sectionName, item, handleChange, handleDelete, handleReset, ...props }) {
+export default function SectionItem({ sectionName, item, handleChange, handleDelete, handleReset, lang, ...props }) {
 	const [showDelete, setShowDelete] = useState(false);
 	const { t } = useTranslation();
 
@@ -13,10 +13,7 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 	const isLargeText = value.length > 50;
 
 	//Dont show first path
-	let keyText = path[0];
-	if (path.length > 1) {
-		keyText = path.slice(1).join('.');
-	}
+	let keyText = path.join(' › ');
 
 	const onChange = (e) => {
 		handleChange(sectionName, key, e.target.value);
@@ -44,7 +41,6 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 					className={`badge capitalize gap-2 z-10 font-mono text-xs ${
 						translated ? 'badge-success bg-opacity-50' : 'badge-ghost'
 					}`}
-					title={key}
 				>
 					{translated ? <KeyComplete /> : <KeyInProgress />}
 					{keyText}
@@ -79,6 +75,7 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 					onChange={onChange}
 					className='textarea textarea-bordered w-full mt-2'
 					value={translated}
+					lang={lang}
 					{...props}
 				/>
 			) : (
@@ -87,6 +84,7 @@ export default function SectionItem({ sectionName, item, handleChange, handleDel
 					onChange={onChange}
 					value={translated}
 					className='input input-bordered  w-full mt-2'
+					lang={lang}
 					{...props}
 				/>
 			)}
@@ -100,6 +98,7 @@ SectionItem.defaultProps = {
 	handleChange: null,
 	handleDelete: null,
 	handleReset: null,
+	lang: 'en',
 };
 
 function DeleteConfirm({ callback = null, show = false, cancel = null }) {

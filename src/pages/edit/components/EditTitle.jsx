@@ -37,7 +37,7 @@ export default function EditTitle({ percent, actions, language, onDownload, file
 				</div>
 			)}
 			<div className='flex items-end justify-between gap-5'>
-				<h1 className='text-3xl font-bold flex-1'>{t('edit.title', { language: getLanguage(language) })}</h1>
+				<h1 className='text-3xl font-bold flex-1'>{t('edit.title', { language: getLanguage(language, true) })}</h1>
 				<span>{progressPercent}%</span>
 			</div>
 			<progress

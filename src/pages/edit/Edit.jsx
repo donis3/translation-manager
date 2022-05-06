@@ -20,8 +20,10 @@ export default function Edit() {
 	const { pagination, changePage } = useArrayPagination({ name: 'translationSections', pages: sectionNames });
 	const items = getSectionItems(pagination.active);
 	const navigate = useNavigate();
-	const isSectionComplete = stats?.completedSections?.includes(pagination.name);
+
+	const isSectionComplete = stats?.completedSections?.includes(pagination.active);
 	const newItemPath = pagination.active.length > 0 ? [pagination.active] : [];
+	const editLanguage = app?.language;
 
 	useEffect(() => {
 		if (!app.loadedAt) {
@@ -67,6 +69,7 @@ export default function Edit() {
 								handleReset={actions.resetItem}
 								item={item}
 								handleChange={handleChange}
+								lang={editLanguage}
 							/>
 						);
 					})}

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsFolder2Open as IncompleteIcon, BsFolderCheck as CompleteIcon } from 'react-icons/bs';
-import { FaTimes, FaPlus } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 
 export default function Section({ name, isComplete, handleShowNewForm, children }) {
 	const { t } = useTranslation();
+	
 
 	return (
 		<div className='translate-section'>

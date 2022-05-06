@@ -19,10 +19,16 @@ export default function useLangList() {
 		}
 	}, []);
 
-	function getLanguage(langCode) {
+	function getLanguage(langCode, local = false) {
 		if (!langCode) return;
 		const locale = locales.all.find((item) => item['iso639-1'] === langCode);
-		if (locale) return locale.name;
+
+		if (locale) {
+			if (!local) return locale.name;
+
+			return locale.local ? locale.local : locale.name;
+		}
+
 		return 'Unknown';
 	}
 

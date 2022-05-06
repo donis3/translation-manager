@@ -64,10 +64,9 @@ export default function Home() {
 				</div>
 			)}
 
-			{!showContinue && <ShowDemo handleClick={loadDemo}/>}
+			{!showContinue && <ShowDemo handleClick={loadDemo} />}
 
-			{!showContinue && <About />}
-			
+			<About />
 		</div>
 	);
 }

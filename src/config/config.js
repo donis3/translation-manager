@@ -1,10 +1,8 @@
-const prefixAllowedTypes = ['string', 'number'];
-
 const config = {
 	env: 'dev',
 	app: {
 		name: 'Translation Manager',
-		git: 'https://github.com/donis3',
+		git: 'https://github.com/donis3/translation-manager',
 		author: 'Deniz Özkan',
 		authorUrl: 'https://github.com/donis3',
 
@@ -46,6 +44,7 @@ const config = {
 
 export default config;
 
+const prefixAllowedTypes = ['string', 'number'];
 function logMsg(msg, part = '', type = 'log') {
 	if (!msg) return;
 	if (config.env !== 'dev') return;
