@@ -2,6 +2,8 @@
 
 This react application is developed for editing json translation files. This is purely a frontend application and saves all data in the users browser.
 
+You can access the app here: [Translation Manager](https://donis3.github.io/translation-manager/)
+
 ## What it does
 
 Translation Manager is basically a json editor. You can load a reference json and a target json. All translation keys will be based on the reference file. Then the target file will be scanned for matching keys. Each matching key will get its value from target file. Unmatching target file keys will be disregarded. This way, you get a synced version of the target file with the reference file. 
